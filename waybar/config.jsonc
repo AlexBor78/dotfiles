@@ -1,0 +1,28 @@
+{
+// base
+    "hight": 30,
+    "spacing": 10,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/scratchpad",
+        "tray",
+        "hyprland/scratchpad",
+        "battery",
+        "cpu",
+        "memory",
+        "temperature",
+        "network"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "hyprland/language",
+        "bluetooth",
+        "backlight",
+        "pulseaudio",
+        "clock"
+    ],
+// modules config
+    "include": "~/conf/waybar/modules.jsonc"
+}
