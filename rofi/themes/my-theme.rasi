@@ -1,0 +1,47 @@
+* {
+  background-color:rgb(51, 42, 70);
+  text-color:rgb(219, 191, 255);
+  width:  50%;
+  height: 50%;
+
+  padding:    3;
+  margin:     2;
+  spacing:    0;
+}
+
+window {
+    border-color:rgb(98, 52, 141);
+    border:           2px;
+    border-radius:    10px;
+}
+
+// fix text
+element {
+    border:  1;
+    border-color: transparent;
+    padding: 3px;
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+element.selected {
+  background-color: rgb(84, 46, 114);
+  //text-color:rgb(68, 4, 141);
+  border-radius:    6px;
+}
+
+// list("box") were all my apps
+listview {
+
+}
+
+error-message {
+    background-color: darkred/10%;
+    border-color: darkred;
+    border-radius: 10px;
+    border: 2px;
+    padding: 0.5em;
+
+}
