@@ -6,7 +6,7 @@
   home.stateVersion = "25.11";
 
   home.username = username;
-  home.homeDirectory = "/home/${username}";
+  home.homeDirectory = lib.mkForce "/home/${username}";
 
   # hypr
   home.file.".config/hypr" = {

@@ -9,10 +9,16 @@
 
   imports =
     [ # Include the results of the hardware scan.
-#      ./hardware-configuration.nix
       ./system.nix
       ./user.nix
+      ./hardware-configuration.nix
     ];
+
+#  imports = lib.optionals (builtins.pathExists /etc/nixos/hardware-configuration.nix) [
+#    ./system.nix
+#    ./user.nix
+#    /etc/nixos/hardware-configuration.nix
+#  ];
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
