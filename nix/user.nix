@@ -7,7 +7,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      tree ayugram-desktop wofi nautilus  
+      tree ayugram-desktop wofi nautilus bibata-cursors
     ];
   };
 
@@ -23,8 +23,10 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget git curl htop btop hyprland kitty vscodium
     firefox 
-    fastfetch rofi hyprshot
-#    zen-browser
+    fastfetch rofi hyprshot gh
+    brightnessctl
+    grim slurp
+    wl-clipboard
   ] ++ [
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

@@ -15,6 +15,15 @@
     force = true;
   };
 
+  # cursor
+  home.pointerCursor = {
+    name = "Bibata-Modern-Classic";
+    package = pkgs.bibata-cursors;
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
   # rofi
   home.file.".config/rofi" = {
     source = "${dotsroot}/rofi";
