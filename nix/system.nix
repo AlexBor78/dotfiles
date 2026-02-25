@@ -1,6 +1,5 @@
 { config, lib, pkgs, hostname,  ... }: 
-let
-  
+let    
   mkExt4 = device: {
     device = lib.mkForce device;
     fsType = "ext4";
@@ -19,7 +18,15 @@ let
     options = [ "defaults" "noatime" "compress=zstd" ];
   };
 
+  mkSwap = device: {
+    device = lib.mkForce device;
+    priority = -1;
+  };
+
 in {
+  
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -28,6 +35,8 @@ in {
     "/boot" = mkFat   "/dev/disk/by-label/boot";
     "/home" = mkBtrfs "/dev/laptop/nixos_home";
   };
+
+  swapDevices = [ (mkSwap "/dev/disk/by-label/swap") ] ;
 
   # Bootloader (grub)
   boot.loader = {
@@ -47,6 +56,7 @@ in {
   zramSwap = {
     enable = true;
     algorithm = "zstd";
+    priority = 100;
     memoryPercent = 50;
   };
 
@@ -56,6 +66,12 @@ in {
     "zswap.max_pool_percent=20"
     "zswap.zpool=z3fold"     # или "zsmalloc"
   ];
+  
+  # microcode updates
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  
+  # virtualization moidule
+  boot.kernelModules = [ "kvm-intel" ];
 
   # Set your time zone.
   time.timeZone = "Europe/Moscow";
