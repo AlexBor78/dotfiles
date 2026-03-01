@@ -1,18 +1,18 @@
-{ config, lib, pkgs, username, dotsroot, ... }: {
+# /nix/home/hyprland.nix
 
-  programs.home-manager.enable = false;
-
-  # Don't touch !!!
-  home.stateVersion = "25.11";
-
-  home.username = username;
-  home.homeDirectory = lib.mkForce "/home/${username}";
-
+{ config, pkgs, dotsroot, ... } : {
+	
   # hypr
   home.file.".config/hypr" = {
     source = config.lib.file.mkOutOfStoreSymlink "${dotsroot}/hypr"; 
     recursive = true;
     force = true;
+  };
+
+   home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    XDG_SESSION_TYPE = "wayland";
+    XDG_CURRENT_DESKTOP = "Hyprland";
   };
 
   # cursor
