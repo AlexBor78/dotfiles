@@ -1,0 +1,3 @@
+[submodule "rofi/Tokyonight-rofi-theme"]
+	path = rofi/Tokyonight-rofi-theme
+	url = https://github.com/AlexBor78/Tokyonight-rofi-theme

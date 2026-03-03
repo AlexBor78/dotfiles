@@ -47,4 +47,20 @@
       tree ayugram-desktop wofi nautilus bibata-cursors lsd
     ];
   };
+
+	services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 0;  # 🔥 КРИТИЧНО!
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      SATA_LINKPWR_ON_BAT = "min_power";
+      PCIE_ASPM_ON_BAT = "powersupersave";
+      WIFI_PWR_ON_BAT = "on";
+    };
+  };
+
+  services.power-profiles-daemon.enable = false;
 }

@@ -1,6 +1,6 @@
 # /nix/home/default.nix
 
-{ config, lib, pkgs, username, dotsroot, nixvim, ... } : {
+{ config, lib, pkgs, username, dotsroot, nixvim, tokyonight, ... } : {
 	
 	# enable home-managegr
   programs.home-manager.enable = true;
@@ -12,8 +12,15 @@
   home.homeDirectory = lib.mkForce "/home/${username}";
 
 	imports = [
+		tokyonight.homeManagerModules.default
 		./shell.nix
 		./nixvim.nix
 		./hyprland.nix
 	];
+
+	tokyonight = {
+		enable = true;
+		style = "night";
+#		transparent = false;
+	};
 }

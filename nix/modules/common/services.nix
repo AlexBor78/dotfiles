@@ -22,4 +22,10 @@
       user = "alex";
     };
   };
+
+	# upower
+	services.upower.enable = true;
+
+	# bios updates
+	services.fwupd.enable = true;
 }
