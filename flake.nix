@@ -15,9 +15,17 @@
         url = "github:nix-community/nixvim";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+			tokyonight = {
+				url = "github:mrjones2014/tokyonight.nix";
+#        inputs.nixpkgs.follows = "nixpkgs";
+			};
+			rofi-theme = {
+			  url = "github:AlexBor78/Tokyonight-rofi-theme";
+			  flake = false;
+			};
     };
   
-  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, ... }: 
+  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, ... }: 
   let
     username = "alex";
     dotsroot = toString self;
@@ -25,7 +33,7 @@
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { 
- 	      inherit self username zen-browser nixvim;
+ 	      inherit self username zen-browser nixvim rofi-theme;
 				theme = import ./modules/theme.nix;
    			hostname = "t480";
       };
@@ -39,7 +47,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.${username} = import ./nix/home;
           home-manager.extraSpecialArgs = { 
-            inherit self username dotsroot nixvim;
+            inherit self username dotsroot nixvim tokyonight rofi-theme;
 						hostname = "t480";
           };
 
@@ -50,7 +58,7 @@
     nixosConfigurations.x13 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { 
- 	      inherit self username zen-browser nixvim;
+ 	      inherit self username zen-browser nixvim rofi-theme;
 				theme = import ./modules/theme.nix;
    			hostname = "x13";
       };
@@ -64,7 +72,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.${username} = import ./nix/home;
           home-manager.extraSpecialArgs = { 
-            inherit self username dotsroot nixvim;
+            inherit self username dotsroot nixvim tokyonight rofi-theme;
 						hostname = "x13";
           };
 

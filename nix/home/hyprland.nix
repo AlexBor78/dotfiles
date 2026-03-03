@@ -1,6 +1,6 @@
 # /nix/home/hyprland.nix
 
-{ config, pkgs, dotsroot, ... } : {
+{ config, pkgs, dotsroot, rofi-theme, ... } : {
 	
   # hypr
   home.file.".config/hypr" = {
@@ -25,9 +25,20 @@
   };
 
   # rofi
-  home.file.".config/rofi" = {
-    source = "${dotsroot}/rofi";
-    recursive = true;
-    force = true;
-  };
+	home.file.".config/rofi" = {
+	  source = "${rofi-theme}";
+	  recursive = true;
+	  force = true;
+	};
+	# wallpaper
+	home.file.".config/wallpaper.png".source = "${dotsroot}/assets/wallpaper.png";
+#	home.file.".config/hypr/hyprpaper.conf".text = ''
+#		wallpaper {
+#    	monitor = eDP-1
+#    	path = ~/.config/wallpaper.png
+#			fit_mode = cover
+#		}
+#
+#  '';
+
 }
