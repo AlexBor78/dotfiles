@@ -30,7 +30,7 @@ in {
   fileSystems = {
     "/" =     mkExt4  "/dev/laptop/nixos_root";
     "/boot" = mkFat   "/dev/disk/by-label/boot";
-    "/home" = mkBtrfs "/dev/laptop/nixos_home";
+    "/home" = mkBtrfs "/dev/laptop/shared_home";
   };
 
   swapDevices = [ (mkSwap "/dev/disk/by-label/swap") ] ;
