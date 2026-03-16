@@ -33,6 +33,7 @@
 		  grub2
 		  dosfstools
 		  flashrom
+			ntfs3g
 
 #			ghidra ida-free
     ];
