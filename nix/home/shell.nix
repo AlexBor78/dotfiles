@@ -30,6 +30,9 @@
     syntaxHighlighting.enable = true;
 
 		initContent = '' 
+			if [ -z "$SSH_AUTH_SOCK" ]; then
+			  eval "$(ssh-agent -s)"
+			fi
 			eval "$(starship init zsh)"
 			fastfetch
 		'';
