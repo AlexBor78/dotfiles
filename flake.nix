@@ -29,9 +29,10 @@
   let
     username = "alex";
     dotsroot = toString self;
+    system = "x86_64-linux";
   in {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+			inherit system;
       specialArgs = { 
  	      inherit self username zen-browser nixvim rofi-theme;
 				theme = import ./modules/theme.nix;
@@ -56,7 +57,7 @@
     };
 
     nixosConfigurations.x13 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+			inherit system;
       specialArgs = { 
  	      inherit self username zen-browser nixvim rofi-theme;
 				theme = import ./modules/theme.nix;

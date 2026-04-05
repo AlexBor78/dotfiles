@@ -6,7 +6,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" "video" "render" ]; # Enable ‘sudo’ for the user.
   	shell = pkgs.zsh;
     packages = with pkgs; [
       tree ayugram-desktop wofi nautilus bibata-cursors lsd
@@ -34,7 +34,18 @@
 		  dosfstools
 		  flashrom
 			ntfs3g
+			cmake
+			doxygen
+			docker
 
+
+			rsync
+			keepassxc
+
+
+			sing-box
+			jq
+			wireguard-tools
 #			ghidra ida-free
     ];
   };
@@ -47,6 +58,9 @@
     wget git curl htop btop hyprland kitty
     brightnessctl
 		upower
+		qemu
+    libvirt
+    bridge-utils
   ] ++ [
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
