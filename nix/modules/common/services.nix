@@ -1,9 +1,9 @@
 # /nix/modules/common/services.nix
 
-{ pkgs, config, ... } : {
+{ pkgs, ... } : {
 	
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  #services.openssh.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -13,6 +13,9 @@
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
+
+	# bios updates
+	services.fwupd.enable = true;
 
 	# display manager
   services.greetd = {
@@ -32,28 +35,19 @@
     SUBSYSTEM=="powercap", MODE="0444"
   '';
 
-	# bios updates
-	services.fwupd.enable = true;
+	services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 0;  # 🔥 КРИТИЧНО!
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      SATA_LINKPWR_ON_BAT = "min_power";
+      PCIE_ASPM_ON_BAT = "powersupersave";
+      WIFI_PWR_ON_BAT = "on";
+    };
+  };
 
-
-	# fingerprint
-	services.fprintd.enable = true;
-	security.pam.services.sudo.fprintAuth = true;
-  security.pam.services.login.fprintAuth = true;
-	security.pam.services.sshd.fprintAuth = true;
-	programs.ssh.startAgent = true;
-
-	# docker
-	virtualisation.docker.enable = true;
-#	virtualisation.docker.storageDriver = "btrfs";
-#	virtualisation.docker.daemon.settings = {
-#  	registry-mirrors = [
-#    	"https://mirror.gcr.io"  # Официальное зеркало от Google [[57]]
-#  	]; 
-#	};
-
-	# qemu
-#	virtualisation.libvirtd.enable = true;
-#  virtualisation.libvirtd.qemu = true;
-
+  services.power-profiles-daemon.enable = false;
 }

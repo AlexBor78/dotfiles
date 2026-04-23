@@ -23,9 +23,4 @@
 		style = "night";
 #		transparent = false;
 	};
-
-
-	# passwords synth, temporary here
-  services.syncthing.enable = true;
-
 }
