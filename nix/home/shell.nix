@@ -17,7 +17,8 @@
 	      owner = "folke";
 	      repo = "tokyonight.nvim";
 	      rev = "main";
-	      sha256 = "sha256-4zfkv3egdWJ/GCWUehV0MAIXxsrGT82Wd1Qqj1SCGOk=";
+	      sha256 = "sha256-a9iRWue7DB7s/wNdxqqB51Jya5P9X6sDftqhdmKggU0=";
+	      #sha256 = "sha256-4zfkv3egdWJ/GCWUehV0MAIXxsrGT82Wd1Qqj1SCGOk=";
 	    } + "/extras/kitty/tokyonight_night.conf"
 	  );
 	};

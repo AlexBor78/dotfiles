@@ -30,6 +30,7 @@
 	  recursive = true;
 	  force = true;
 	};
+
 	# wallpaper
 	home.file.".config/wallpaper.png".source = "${dotsroot}/assets/wallpaper.png";
 #	home.file.".config/hypr/hyprpaper.conf".text = ''

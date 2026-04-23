@@ -4,6 +4,7 @@
 
 	programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
+	nixpkgs.config.allowUnfree = true;
   users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" "video" "render" ]; # Enable ‘sudo’ for the user.
@@ -19,7 +20,7 @@
 			powertop
 			gimp
 			mako
-			swww
+			awww
 			dmidecode
 		  acpica-tools
 		  msr-tools
@@ -37,31 +38,29 @@
 			cmake
 			doxygen
 			docker
+			brave
+			chromium
 
+
+#			modrinth-app
+#			jdk17
+#			prismlauncher
 
 			rsync
 			keepassxc
+
+			winboat
+			freerdp
 
 
 			sing-box
 			jq
 			wireguard-tools
 #			ghidra ida-free
-    ];
-  };
 
-	hardware.cpu.x86.msr.settings.allow-writes = "on";
-
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    wget git curl htop btop hyprland kitty
-    brightnessctl
-		upower
-		qemu
-    libvirt
-    bridge-utils
-  ] ++ [
+    ]++ [
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
+  };
+
 }
