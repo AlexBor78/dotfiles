@@ -2,14 +2,21 @@
 
 { config, pkgs, dotsroot, rofi-theme, ... } : {
 	
-  # hypr
+
+	# hyprland 
+#	programs.hyprland = {
+#    enable = true;
+#    xwayland.enable = true; # создаёт нужные конфиги и права
+#  };
+  # hypr config
   home.file.".config/hypr" = {
     source = config.lib.file.mkOutOfStoreSymlink "${dotsroot}/hypr"; 
     recursive = true;
     force = true;
   };
 
-   home.sessionVariables = {
+	
+  home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XDG_SESSION_TYPE = "wayland";
     XDG_CURRENT_DESKTOP = "Hyprland";
