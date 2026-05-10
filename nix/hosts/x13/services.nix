@@ -1,4 +1,4 @@
-{ pkgs, ... } : {
+{ lib, pkgs, ... } : {
 
 	# fingerprint
 	services.fprintd.enable = true;
@@ -30,10 +30,61 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;  # для совместимости с приложениями под PulseAudio
+		jack.enable = true;
   };
+
+	# have no wtf is that - should fix usb audio input devices :)
+  services.pipewire.wireplumber.configPackages = [
+    (pkgs.writeTextDir "share/wireplumber/main.lua.d/51-usb-audio.lua" ''
+      alsa_monitor.rules = {
+        {
+          matches = {{"node.name", "matches", ".*usb.*"}};
+          apply_properties = {
+            ["api.alsa.period-size"] = 1024;
+            ["api.alsa.headroom"] = 4096;
+            ["api.alsa.disable-batch"] = true;
+          };
+        }
+      }
+    '')
+		(pkgs.writeTextDir "share/wireplumber/main.lua.d/52-usb-force-capture.lua" ''
+		  alsa_monitor.rules = {
+		    {
+		      matches = {{"node.name", "matches", ".*Inspire.*"}};
+		      actions = {
+		        "update-props" = {
+		          ["api.alsa.path"] = "hw:1";  -- замени 1 на номер карты из `aplay -l`
+		          ["node.passive"] = false;
+		        };
+		      };
+		    }
+		  }
+		'')
+  ];
+
   
   # GUI для управления (если у тебя не тяжелое DE)
   services.blueman.enable = true;  # blueman-applet и менеджер
+
+	# time sync (req by xray, or any tls)
+	services.timesyncd.enable = true;
+
+	# xray vpn
+	services.xray = {
+    enable = true;
+    # configFile передаёт файл бинарнику "как есть", без парсинга в Nix
+    settingsFile = "/etc/xray/config.json";
+  };
+
+	networking.proxy.default = "socks5://127.0.0.1:10808";
+	systemd.services.nix-daemon.environment = {
+	  http_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
+	  https_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
+	  ALL_PROXY = lib.mkForce "socks5h://127.0.0.1:10808";
+	  # Исключения: локальные адреса и .ru домены
+	  NO_PROXY = lib.mkForce "localhost,127.0.0.1,.local,.ru";
+	};
+
 
 
 #	services.byedpi = {
@@ -51,6 +102,7 @@
 #	};
 
 	# qemu
-#	virtualisation.libvirtd.enable = true;
-#  virtualisation.libvirtd.qemu = true;
+	virtualisation.libvirtd.enable = true;
+#  virtualisation.libvirtd.qemu.enable = true;
+#virtualisation.libvirtd.qemu.ovmf.enable = true;  # UEFI поддержка (важно для Arch)
 }

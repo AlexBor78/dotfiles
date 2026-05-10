@@ -7,9 +7,8 @@
 	nixpkgs.config.allowUnfree = true;
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" "video" "render" ]; # Enable ‘sudo’ for the user.
-  	shell = pkgs.zsh;
-    packages = with pkgs; [
+    extraGroups = [ "wheel" "networkmanager" "docker" "video" "audio" "render" "libvirtd" "kvm" "qemu-libvirtd" ]; # Enable ‘sudo’ for the user.
+  	shell = pkgs.zsh; packages = with pkgs; [
 			hyprland
       tree ayugram-desktop wofi nautilus bibata-cursors lsd
     	fastfetch rofi hyprshot gh
@@ -40,7 +39,13 @@
 			doxygen
 			docker
 			brave
-#			reaper # need vpn in russia :((
+
+			reaper # need vpn in russia :((
+			pipewire.jack
+			xwayland
+			vital
+			audacity
+			pwvucontrol
 #			nix-ld
 
 
@@ -81,8 +86,9 @@
 #	];
 #  # List packages installed in system profile.
 #  # You can use https://search.nixos.org/ to find more packages (and options).
-#  environment.systemPackages = with pkgs; [
-#  ] ++ [
-#    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-#  ];
-}
+  environment.systemPackages = with pkgs; [
+		qemu_kvm virt-manager virt-viewer adwaita-icon-theme OVMF
+  ] ++ [
+    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
+}#

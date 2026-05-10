@@ -12,7 +12,7 @@
       enable = true;
       efiSupport = true;
       devices = [ "nodev" ];
-      useOSProber = true;
+#      useOSProber = true;
 			extraEntries = ''
 			  menuentry "Arch Linux" {
 			    insmod part_gpt
