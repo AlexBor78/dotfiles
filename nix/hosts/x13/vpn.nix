@@ -1,3 +1,4 @@
+# todo: pwd
 { ... } : {
 	# vpn for server
 	networking.wireguard.enable = true;

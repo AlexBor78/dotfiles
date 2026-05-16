@@ -1,6 +1,6 @@
 # /nix/modules/common/boot.nix
 
-{ config, lib, pkgs, ...} : {
+{ lib, ...} : {
 	
   # Bootloader (grub)
   boot.loader = {
@@ -13,6 +13,8 @@
       efiSupport = true;
       devices = [ "nodev" ];
 #      useOSProber = true;
+
+			# todo: move to host srecific
 			extraEntries = ''
 			  menuentry "Arch Linux" {
 			    insmod part_gpt
@@ -26,6 +28,7 @@
   };
 
   boot.kernelParams = [
+		# todo: move to host specific
 		# enable amd_pstate
     "nohz_idle=on"
     "processor.ignore_ppc=1"

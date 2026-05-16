@@ -8,6 +8,7 @@
 		tokyonight.enable = true;
 	};
 
+	# todo: that doesn't work
 	programs.btop.settings.color_theme = "tokyo-night";
 
 	# kitty
@@ -48,6 +49,7 @@
 			];
 		};
 
+		# todo: add update shell alias
 		shellAliases = {
 			ls = lib.mkForce "lsd";
 			cat = "bat";
@@ -136,6 +138,7 @@
 			};
 
 			modules = [
+				# todo: done with colors
 				"title"
 				"separator"
 				{

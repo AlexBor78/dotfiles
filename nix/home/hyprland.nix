@@ -1,5 +1,7 @@
 # /nix/home/hyprland.nix
 
+# todo: rewrite hyprland config on lua
+
 { config, pkgs, dotsroot, rofi-theme, ... } : {
 	
 
@@ -8,14 +10,16 @@
 #    enable = true;
 #    xwayland.enable = true; # создаёт нужные конфиги и права
 #  };
+
   # hypr config
   home.file.".config/hypr" = {
     source = config.lib.file.mkOutOfStoreSymlink "${dotsroot}/hypr"; 
     recursive = true;
     force = true;
   };
-
 	
+	# is this vars that required
+	# todo: refactor
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XDG_SESSION_TYPE = "wayland";

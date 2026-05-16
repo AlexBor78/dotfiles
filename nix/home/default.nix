@@ -1,5 +1,7 @@
 # /nix/home/default.nix
 
+# todo: may move home to modules/
+
 { config, lib, pkgs, username, dotsroot, nixvim, tokyonight, ... } : {
 	
 	# enable home-managegr
@@ -18,6 +20,8 @@
 		./hyprland.nix
 	];
 
+	# wtf is that
+	# todo: refactor
 	tokyonight = {
 		enable = true;
 		style = "night";

@@ -1,10 +1,14 @@
 { hostname, ... } : {
+
   networking.hostName = hostname; # Define your hostname.
+
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 	networking.networkmanager.dns = "none";
 
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+
+	# todo: configure proxy as regular people, not stuped ai.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

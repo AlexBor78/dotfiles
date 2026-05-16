@@ -1,4 +1,5 @@
 # /nix/home/nixvim.nix
+# todo: refactor half ai slop
 { nixvim, pkgs, ... }: {
 
   imports = [
@@ -109,6 +110,7 @@
 		    pkgs.vimPlugins.vim-doxygen
 		  ];
 
+			# todo: rename
 		  extraConfigLua = ''
 		    -- doxygen settings
 		    vim.g.doxygen_enable_mappings = 1

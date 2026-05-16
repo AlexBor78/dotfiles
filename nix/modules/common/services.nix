@@ -30,6 +30,8 @@
 	services.upower.enable = true;
 	services.udev.enable = true;
 
+	# todo: clean up && refactr ai power solutoin shit 
+
 	# fix btop showing power
   services.udev.extraRules = ''
     SUBSYSTEM=="powercap", MODE="0444"

@@ -1,3 +1,4 @@
+# todo: remove unused duplicated file
 # /nix/modules/common/user.nix
 
 { config, lib, pkgs, username, zen-browser, ... } : {

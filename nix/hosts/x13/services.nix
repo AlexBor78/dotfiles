@@ -7,9 +7,10 @@
 	security.pam.services.sshd.fprintAuth = true;
 	programs.ssh.startAgent = true;
 
-	# passwords synth, temporary here
+	# passwords synth
   services.syncthing.enable = true;
 
+	# todo: refactor ai shit
 	services.flatpak.enable = true;
 		xdg.portal = {
 	  enable = true;
@@ -21,8 +22,11 @@
 	  ];
 	};
 
- hardware.bluetooth.enable = true;
+	# todo: move to common
+	hardware.bluetooth.enable = true;
   
+	# todo: move to common, remove ai slop
+
   # Рекомендуется: PipeWire вместо PulseAudio (лучшая поддержка BT)
   security.rtkit.enable = true;  # опционально, но рекомендуется
   services.pipewire = {
@@ -34,6 +38,7 @@
   };
 
 	# have no wtf is that - should fix usb audio input devices :)
+	# doesn't work btw :((
   services.pipewire.wireplumber.configPackages = [
     (pkgs.writeTextDir "share/wireplumber/main.lua.d/51-usb-audio.lua" ''
       alsa_monitor.rules = {
@@ -64,18 +69,22 @@
 
   
   # GUI для управления (если у тебя не тяжелое DE)
+	# todo: move to pkgs mb, ot move to more propriate place
   services.blueman.enable = true;  # blueman-applet и менеджер
 
 	# time sync (req by xray, or any tls)
+	# todo: move to common
 	services.timesyncd.enable = true;
 
 	# xray vpn
+	# todo: move to ./vpn.nix
 	services.xray = {
     enable = true;
     # configFile передаёт файл бинарнику "как есть", без парсинга в Nix
     settingsFile = "/etc/xray/config.json";
   };
 
+	# todo: do it proprioly
 	networking.proxy.default = "socks5://127.0.0.1:10808";
 	systemd.services.nix-daemon.environment = {
 	  http_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
@@ -87,10 +96,13 @@
 
 
 
+# todo: setup
 #	services.byedpi = {
 #	  enable = true;
 #	  extraArgs = [ "--disorder" "1" "--auto" "torst" "--tlsrec" "1+s" ];
 #	};
+
+# todo: move all docker, qemu etc to deploy.nix like file
 
 	# docker
 	virtualisation.docker.enable = true;
