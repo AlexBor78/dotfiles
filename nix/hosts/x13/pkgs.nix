@@ -1,5 +1,10 @@
 # /nix/modules/common/user.nix
 
+# todo with pkgs:
+#				- clean up usless 
+# 			- sort 
+# 			- move smthng from/to common
+
 { config, lib, pkgs, username, zen-browser, ... } : {
 
 	programs.zsh.enable = true;
