@@ -1,8 +1,10 @@
 # /flake.nix
+# todo: refactoring
 {
-  description = "first flake try";
+  description = "my main desktop nixos config";
     inputs = {
       nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+			tokyonight.url = "github:mrjones2014/tokyonight.nix";
       home-manager = {
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -15,70 +17,41 @@
         url = "github:nix-community/nixvim";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-			tokyonight = {
-				url = "github:mrjones2014/tokyonight.nix";
-#        inputs.nixpkgs.follows = "nixpkgs";
-			};
 			rofi-theme = {
 			  url = "github:AlexBor78/Tokyonight-rofi-theme";
 			  flake = false;
 			};
     };
-  
   outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, ... }: 
   let
-    username = "alex";
+    username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
-    system = "x86_64-linux";
+		libroot = "${dotsroot}/nix/lib";
+    mkSystem = hostname: nixpkgs.lib.nixosSystem {
+			system = "x86_64-linux";
+			specialArgs = { 
+				inherit self hostname username zen-browser nixvim rofi-theme;
+		    myLib = import ./nix/lib { inherit (nixpkgs) lib; };
+#				theme = import ./modules/theme.nix; # unused :)
+			};
+			modules = [
+				./nix/hosts/${hostname}
+				./nix/modules/common
+
+				home-manager.nixosModules.home-manager {
+					home-manager.useGlobalPkgs = true;
+					home-manager.useUserPackages = true;
+					home-manager.users.${username} = import ./nix/hm;
+					home-manager.extraSpecialArgs = { 
+						inherit self hostname username libroot dotsroot nixvim tokyonight rofi-theme;
+					};
+				}
+			];
+		};
+
   in {
-    nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
-			inherit system;
-      specialArgs = { 
- 	      inherit self username zen-browser nixvim rofi-theme;
-				theme = import ./modules/theme.nix;
-   			hostname = "t480";
-      };
-      modules = [
-				./nix/hosts/t480
-				./nix/modules/common
-				
 
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${username} = import ./nix/hm;
-          home-manager.extraSpecialArgs = { 
-            inherit self username dotsroot nixvim tokyonight rofi-theme;
-						hostname = "t480";
-          };
-
-        }
-      ];
-    };
-
-    nixosConfigurations.x13 = nixpkgs.lib.nixosSystem {
-			inherit system;
-      specialArgs = { 
- 	      inherit self username zen-browser nixvim rofi-theme;
-				theme = import ./modules/theme.nix;
-   			hostname = "x13";
-      };
-      modules = [
-				./nix/hosts/x13
-				./nix/modules/common
-				
-
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${username} = import ./nix/hm;
-          home-manager.extraSpecialArgs = { 
-            inherit self username dotsroot nixvim tokyonight rofi-theme;
-						hostname = "x13";
-          };
-
-        }
-      ];
-    };
+    nixosConfigurations.t480 = mkSystem "t480";
+    nixosConfigurations.x13 = mkSystem "x13";
   };
 }
