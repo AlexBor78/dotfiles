@@ -46,7 +46,7 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.${username} = import ./nix/home;
+          home-manager.users.${username} = import ./nix/hm;
           home-manager.extraSpecialArgs = { 
             inherit self username dotsroot nixvim tokyonight rofi-theme;
 						hostname = "t480";
@@ -71,7 +71,7 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.${username} = import ./nix/home;
+          home-manager.users.${username} = import ./nix/hm;
           home-manager.extraSpecialArgs = { 
             inherit self username dotsroot nixvim tokyonight rofi-theme;
 						hostname = "x13";
