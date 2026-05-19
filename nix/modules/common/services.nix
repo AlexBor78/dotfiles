@@ -1,12 +1,27 @@
 # /nix/modules/common/services.nix
 
-{ pkgs, ... } : {
+{ pkgs, username, ... } : {
 	
   # Enable the OpenSSH daemon.
   #services.openssh.enable = true;
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
+	# time sync (req by xray, or any tls)
+	services.timesyncd.enable = true;
+
+	# bios updates
+	services.fwupd.enable = true;
+
+	# blutooth
+	hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+	# flash automount
+	services.udisks2.enable = true;
+	security.polkit.enable = true;
+
+	# upower
+	services.upower.enable = true;
+	services.udev.enable = true;
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
@@ -14,42 +29,35 @@
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-	# bios updates
-	services.fwupd.enable = true;
-
-	# display manager
-  services.greetd = {
+  # Enable sound.
+  security.rtkit.enable = true;
+  services.pipewire = {
     enable = true;
-    settings.default_session = {
-      command = "${pkgs.hyprland}/bin/start-hyprland";
-      user = "alex";
-    };
+    pulse.enable = true;
+		jack.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
   };
 
-	# upower
-	services.upower.enable = true;
-	services.udev.enable = true;
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+	services.printing.drivers = with pkgs; [ hplip ];
+	services.avahi = {
+	  enable = true;
+	  nssmdns4 = true;
+	  openFirewall = true;
+	};
 
-	# todo: clean up && refactr ai power solutoin shit 
+	# xdg portals
+	xdg.portal = {
+	  enable = true;
+	  config.common.default = [ "wlr" "gtk" ];
+	  configPackages = with pkgs; [
+	    xdg-desktop-portal-wlr  # screencast, csreenshoots etc for wayland 
+	    xdg-desktop-portal-gtk  # file dialogs etc
+	  ];
 
-	# fix btop showing power
-  services.udev.extraRules = ''
-    SUBSYSTEM=="powercap", MODE="0444"
-  '';
-
-	services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_BOOST_ON_AC = 1;
-      CPU_BOOST_ON_BAT = 0;  # 🔥 КРИТИЧНО!
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      SATA_LINKPWR_ON_BAT = "min_power";
-      PCIE_ASPM_ON_BAT = "powersupersave";
-      WIFI_PWR_ON_BAT = "on";
-    };
-  };
-
-  services.power-profiles-daemon.enable = false;
+		# todo: needs for assertion, will be deleted in future :)
+		extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
+	};
 }

@@ -32,21 +32,9 @@
   # Set your time zone.
   time.timeZone = "Europe/Moscow";
 
-  # Enable sound.
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-
-#  # Define a user account. Don't forget to set a password with ‘passwd’.
-#  users.users.${username} = {
-#    isNormalUser = true;
-#    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-#    packages = with pkgs; [
-#      tree ayugram-desktop wofi nautilus bibata-cursors lsd
-#    ];
-#  };
-
+	# todo: predefine some stuff propertly
+#	users.users.${username}.isNormalUser = true;
+#	users.users.${username}.extraGroups = [ "wheel" "networkmanager" ];
 
 #	# minecraft shit
 #	hardware.graphics = {

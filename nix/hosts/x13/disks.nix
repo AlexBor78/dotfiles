@@ -1,40 +1,14 @@
-# todo: pwd
+# /nix/hosts/x13/disks.nix
 
-# todo: move function to common
-{ lib,  ... }: 
-let    
-  mkExt4 = device: {
-    device = lib.mkForce device;
-    fsType = "ext4";
-    options = [ "defaults" "noatime" ];
-  };
-  
-  mkFat = device: {
-    device = lib.mkForce device;
-    fsType = "vfat";
-    options = [ "defaults" "noatime" ];
-  };
-  
-  mkBtrfs = device: {
-    device = lib.mkForce device;
-    fsType = "btrfs";
-    options = [ "defaults" "noatime" "compress=zstd" ];
-  };
-
-  mkSwap = device: {
-    device = lib.mkForce device;
-    priority = -1;
-  };
-
-in {
+{ myLib, ... }: {
   
   fileSystems = {
-    "/" =     mkExt4  "/dev/laptop/nixos_root";
-    "/boot" = mkFat   "/dev/disk/by-label/boot";
-    "/home" = mkBtrfs "/dev/laptop/shared_home";
+    "/" =     myLib.disks.mkExt4BL	"nixos_root";
+    "/boot" = myLib.disks.mkFatBL   "boot";
+    "/home" = myLib.disks.mkBtrfs 	{ device = "/dev/laptop/shared_home"; comp = "zstd"; };
   };
 
-  swapDevices = [ (mkSwap "/dev/disk/by-label/swap") ] ;
+  swapDevices = [ (myLib.disks.mkSwap "/dev/disk/by-label/swap") ] ;
 
   zramSwap = {
     enable = true;

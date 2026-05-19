@@ -3,13 +3,22 @@
 # todo: rewrite hyprland config on lua
 
 { config, pkgs, dotsroot, rofi-theme, ... } : {
-	
 
-	# hyprland 
-#	programs.hyprland = {
-#    enable = true;
-#    xwayland.enable = true; # создаёт нужные конфиги и права
-#  };
+	home.packages = with pkgs; [
+		rofi
+		mako
+		awww
+		grim
+		slurp
+		kitty
+		# hyprshot # unused for now
+		hyprland
+		xwayland
+    brightnessctl # need user in gruope "video" 
+		wl-clipboard
+		playerctl
+		bibata-cursors
+	];
 
   # hypr config
   home.file.".config/hypr" = {
@@ -18,14 +27,6 @@
     force = true;
   };
 	
-	# is this vars that required
-	# todo: refactor
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-  };
-
   # cursor
   home.pointerCursor = {
     name = "Bibata-Modern-Classic";
@@ -44,13 +45,4 @@
 
 	# wallpaper
 	home.file.".config/wallpaper.png".source = "${dotsroot}/assets/wallpaper.png";
-#	home.file.".config/hypr/hyprpaper.conf".text = ''
-#		wallpaper {
-#    	monitor = eDP-1
-#    	path = ~/.config/wallpaper.png
-#			fit_mode = cover
-#		}
-#
-#  '';
-
 }
