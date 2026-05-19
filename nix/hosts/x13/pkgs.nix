@@ -1,81 +1,14 @@
 # /nix/modules/common/user.nix
 
-# todo with pkgs:
-#				- clean up usless 
-# 			- sort 
-# 			- move smthng from/to common
 
-{ config, lib, pkgs, username, zen-browser, ... } : {
+{ config, lib, pkgs, ... } : {
 
-	programs.zsh.enable = true;
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-	nixpkgs.config.allowUnfree = true;
-  users.users.${username} = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" "video" "audio" "render" "libvirtd" "kvm" "qemu-libvirtd" ]; # Enable ‘sudo’ for the user.
-  	shell = pkgs.zsh; packages = with pkgs; [
-			hyprland
-      tree ayugram-desktop wofi nautilus bibata-cursors lsd
-    	fastfetch rofi hyprshot gh
-    	grim slurp
-    	wl-clipboard
-			starship
-			lazygit
-			clang
-			powertop
-			gimp
-			mako
-			awww
-			dmidecode
-		  acpica-tools
-		  msr-tools
-		  uefitool
-		  binwalk
-		  ghidra
-		  p7zip
-		  git
-		  wget
-		  curl
-		  grub2
-		  dosfstools
-		  flashrom
-			ntfs3g
-			cmake
-			doxygen
-			docker
-			brave
+  environment.systemPackages = with pkgs; [
+		docker
+		qemu_kvm virt-manager virt-viewer adwaita-icon-theme OVMF
+  ]; 
 
-			reaper # need vpn in russia :((
-			pipewire.jack
-			xwayland
-			vital
-			audacity
-			pwvucontrol
-#			nix-ld
-
-
-#			modrinth-app
-#			jdk17
-#			prismlauncher
-
-			rsync
-			keepassxc
-
-			winboat
-			freerdp
-			
-			byedpi
-
-
-			sing-box
-			jq
-			wireguard-tools
-#			ghidra ida-free
-
-    ];
-  };
-
-	hardware.cpu.x86.msr.settings.allow-writes = "on";
+#	hardware.cpu.x86.msr.settings.allow-writes = "on";
 
 	# tmp here
 #	programs.nix-ld.enable = true;
@@ -91,9 +24,4 @@
 #	];
 #  # List packages installed in system profile.
 #  # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-		qemu_kvm virt-manager virt-viewer adwaita-icon-theme OVMF
-  ] ++ [
-    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
-}#
+}

@@ -22,6 +22,7 @@
 			  flake = false;
 			};
     };
+	# todo: try "@ inputs" shit
   outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, ... }: 
   let
     username = "alex"; # todo: change to lexa one day
@@ -37,13 +38,14 @@
 			modules = [
 				./nix/hosts/${hostname}
 				./nix/modules/common
+				{ nixpkgs.config.allowUnfree = true; }
 
 				home-manager.nixosModules.home-manager {
 					home-manager.useGlobalPkgs = true;
 					home-manager.useUserPackages = true;
 					home-manager.users.${username} = import ./nix/hm;
 					home-manager.extraSpecialArgs = { 
-						inherit self hostname username libroot dotsroot nixvim tokyonight rofi-theme;
+						inherit self hostname username libroot dotsroot nixvim tokyonight rofi-theme zen-browser;
 					};
 				}
 			];
@@ -51,7 +53,7 @@
 
   in {
 
-    nixosConfigurations.t480 = mkSystem "t480";
+#    nixosConfigurations.t480 = mkSystem "t480"; # tmp turned off
     nixosConfigurations.x13 = mkSystem "x13";
   };
 }

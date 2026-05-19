@@ -2,18 +2,28 @@
 
 { config, pkgs, lib, theme, hostname, dotsroot, ... } : {
 
-	programs.lsd.enable = true;
 	programs.bat = {
 		enable = true;
 		tokyonight.enable = true;
 	};
 
-	# todo: that doesn't work
+	home.packages = with pkgs; [
+			gh
+			lsd
+			bat
+			kitty
+			lazygit
+			starship
+			fastfetch
+	];
+
+	# todo: btop theme doesn't work
 	programs.btop.settings.color_theme = "tokyo-night";
 
 	# kitty
 	programs.kitty = {
 	  enable = true;
+		# theme
 	  extraConfig = builtins.readFile ( pkgs.fetchFromGitHub {
 	      owner = "folke";
 	      repo = "tokyonight.nvim";
@@ -44,27 +54,24 @@
 			theme = "";
 			plugins = [
 				"git"
-#				"zsh-autosuggestions"
-#				"zsh-syntax-highlighting"
 			];
 		};
 
-		# todo: add update shell alias
 		shellAliases = {
 			ls = lib.mkForce "lsd";
 			cat = "bat";
 			rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#${hostname}";
-
+			upate = "sudo nix flake update";
 		};
 	};
 
-	# starship - prompt
 	programs.starship = {
 		enable = true;
 		settings = {
 			format = "$username@$hostname $directory $git_branch $battery\n$character";
 			add_newline = false;
 
+			time.disabled = true;
 		  username = {
 				show_always = true;
 				format = "[$user]($style)";
@@ -91,10 +98,13 @@
 				format = "[\\($branch\\)]($style)";
 				style = "bold purple";
 			};
-			time.disabled = true;
 
 		  battery = {
 				disabled = false;
+				full_symbol = "";
+				charging_symbol = "";
+				discharging_symbol = "";
+				format = "[$percentage]($style)";
 				display = [ 
 					{
 						threshold = 5;
@@ -109,11 +119,8 @@
 						style = "bold green";
 					}
 				];
-				format = "[$percentage]($style)";
-				full_symbol = "";
-				charging_symbol = "";
-				discharging_symbol = "";
 			};
+
 			character = {
 				success_symbol = "[>\\$](bold purple)";
 		    error_symbol = "[>\\$](bold red)";
@@ -137,77 +144,24 @@
 				};
 			};
 
-			modules = [
-				# todo: done with colors
-				"title"
-				"separator"
-				{
-					type = "host";
-					key = "host";
-					keyColor = "blue";
-				}
-				{
-					type = "cpu";
-					key = "cpu";
-					format = "{name} ({cores-physical}/{cores-logical}) @ {freq-max}";
-				}
-				{
-					type = "gpu";
-					key = "gpu";
-				}
-				{
-					type = "memory";
-					key = "memory";
-				}
-				{
-					type = "swap";
-					key = "swap";
-				}
-				{
-					type = "disk";
-					key = "disk";
-				}
-				{
-					type = "battery";
-					key = "battery";
-				}
-				{
-					type = "uptime";
-					key = "uptime";
-				}
-
-				"separator"
-				{
-					type = "Kernel";
-					key = "kernel";
-
-				}
-				{
-					type = "os";
-					key = "os";
-				}
-				{
-					type = "wm";
-					key = "wm";
-				}
-				{
-					type = "terminal";
-					key = "terminal";
-				}
-				{
-					type = "shell";
-					key = "shell";
-				}
-				{
-					type = "packages";
-					key = "packages";
-				}
-
-				"separator"
-				{
-					type = "colors";
-				}
-			];
+			modules = let mkModules = list: map (item:
+					if builtins.isString item then {
+						type = item;
+						key = lib.toLower item;
+						keyColor = "blue";
+					}	else {
+						type = item.type;
+						key = lib.toLower item.type;
+						format = item.format;
+						keyColor = "blue";
+					}) list; 	
+			in [ "title" "separator" ]
+			++					mkModules [ "host" 
+										{ type = "cpu"; format = "{name} ({cores-physical}/{cores-logical}) @ {freq-max}"; }
+										"gpu" "memory" "swap" "disk" "battery" "uptime" ]
+			++ 					[ "separator" ]
+			++ 					mkModules [ "Kernel" "os" "terminal" "wm" "shell" "packages" ]
+			++					[ "separator" {type = "colors";} ];
 		};
 	};
 }

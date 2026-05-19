@@ -3,18 +3,25 @@
 { config, lib, pkgs, username, zen-browser, ... } : {
 
   environment.systemPackages = with pkgs; [
-		# todo: add file and other common clis;
-		# 			clean up && refactor
-    wget git curl htop btop kitty
-    brightnessctl
-		upower
-    libvirt
-    bridge-utils
-	  bind        # nslookup, dig
+    wget git curl 
+		htop btop 
+		tree jq
+
+		# hardware stuff utils
+		usbutils pciutils lm-sensors smartmontools
+
+		# fs utils
+		exfatprogs btrfs-progs
+
+		# nix utils
+		deadnix nix-diff
+
+		iproute2 
 	  dnsutils    # dig, host
  	  openssl     # проверка сертификатов
-		tlp
-  ] ++ [
-    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+		p7zip
+		rsync
+		dosfstools
+		ntfs3g
   ];
 }

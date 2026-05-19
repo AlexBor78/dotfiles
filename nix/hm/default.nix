@@ -1,8 +1,6 @@
 # /nix/home/default.nix
 
-# todo: may move home to modules/
-
-{ config, lib, pkgs, username, dotsroot, nixvim, tokyonight, ... } : {
+{ config, lib, pkgs, username, dotsroot, nixvim, tokyonight, zen-browser, ... } : {
 	
 	# enable home-managegr
   programs.home-manager.enable = true;
@@ -15,16 +13,9 @@
 
 	imports = [
 		tokyonight.homeManagerModules.default
+		./pkgs.nix
 		./shell.nix
 		./nixvim.nix
 		./hyprland.nix
 	];
-
-	# wtf is that
-	# todo: refactor
-	tokyonight = {
-		enable = true;
-		style = "night";
-#		transparent = false;
-	};
 }

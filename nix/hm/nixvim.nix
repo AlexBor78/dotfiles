@@ -6,7 +6,6 @@
     nixvim.homeModules.nixvim
   ];
 
-  # nixvim
   programs.nixvim = {
     enable = true;
     
@@ -23,17 +22,14 @@
 			};
     };
 
-		# spellcheck
-		  spellcheck = {
-		    enable = true;
-		    settings = {
-		      lang = "en";
-		      use_nerd_font_symbols = true;
-		    };
-		  };
-
+		spellcheck = {
+			enable = true;
+			settings = {
+				lang = "en";
+				use_nerd_font_symbols = true;
+			};
+		};
 	
-		# theme
 		colorschemes.tokyonight = {
 	    enable = true;
 	    settings.style = "night";
@@ -110,7 +106,6 @@
 		    pkgs.vimPlugins.vim-doxygen
 		  ];
 
-			# todo: rename
 		  extraConfigLua = ''
 		    -- doxygen settings
 		    vim.g.doxygen_enable_mappings = 1

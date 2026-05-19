@@ -1,4 +1,4 @@
-{ lib, pkgs, ... } : {
+{ lib, pkgs, username, ... } : {
 
 	# fingerprint
 	services.fprintd.enable = true;
@@ -10,77 +10,20 @@
 	# passwords synth
   services.syncthing.enable = true;
 
-	# todo: refactor ai shit
-	services.flatpak.enable = true;
-		xdg.portal = {
-	  enable = true;
-	  # Важно: указываем бэкенды, чтобы работало на твоем окружении
-	  # Если используешь Hyprland/Sway/GTK, оставь как есть. Если KDE - добавь xdg-desktop-portal-kde
-	  extraPortals = with pkgs; [
-	    xdg-desktop-portal-gtk  # для интеграции с темой/шрифтами
-	    xdg-desktop-portal-wlr  # если wayland композитор на wlroots (sway/hyprland)
-	  ];
-	};
+#	services.flatpak.enable = true;
 
-	# todo: move to common
-	hardware.bluetooth.enable = true;
-  
-	# todo: move to common, remove ai slop
-
-  # Рекомендуется: PipeWire вместо PulseAudio (лучшая поддержка BT)
-  security.rtkit.enable = true;  # опционально, но рекомендуется
-  services.pipewire = {
+	# display manager
+  services.greetd = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;  # для совместимости с приложениями под PulseAudio
-		jack.enable = true;
+    settings.default_session = {
+      command = "${pkgs.hyprland}/bin/start-hyprland";
+      user = "${username}";
+    };
   };
 
-	# have no wtf is that - should fix usb audio input devices :)
-	# doesn't work btw :((
-  services.pipewire.wireplumber.configPackages = [
-    (pkgs.writeTextDir "share/wireplumber/main.lua.d/51-usb-audio.lua" ''
-      alsa_monitor.rules = {
-        {
-          matches = {{"node.name", "matches", ".*usb.*"}};
-          apply_properties = {
-            ["api.alsa.period-size"] = 1024;
-            ["api.alsa.headroom"] = 4096;
-            ["api.alsa.disable-batch"] = true;
-          };
-        }
-      }
-    '')
-		(pkgs.writeTextDir "share/wireplumber/main.lua.d/52-usb-force-capture.lua" ''
-		  alsa_monitor.rules = {
-		    {
-		      matches = {{"node.name", "matches", ".*Inspire.*"}};
-		      actions = {
-		        "update-props" = {
-		          ["api.alsa.path"] = "hw:1";  -- замени 1 на номер карты из `aplay -l`
-		          ["node.passive"] = false;
-		        };
-		      };
-		    }
-		  }
-		'')
-  ];
-
-  
-  # GUI для управления (если у тебя не тяжелое DE)
-	# todo: move to pkgs mb, ot move to more propriate place
-  services.blueman.enable = true;  # blueman-applet и менеджер
-
-	# time sync (req by xray, or any tls)
-	# todo: move to common
-	services.timesyncd.enable = true;
-
 	# xray vpn
-	# todo: move to ./vpn.nix
 	services.xray = {
     enable = true;
-    # configFile передаёт файл бинарнику "как есть", без парсинга в Nix
     settingsFile = "/etc/xray/config.json";
   };
 
@@ -94,27 +37,42 @@
 	  NO_PROXY = lib.mkForce "localhost,127.0.0.1,.local,.ru";
 	};
 
-
-
-# todo: setup
-#	services.byedpi = {
-#	  enable = true;
-#	  extraArgs = [ "--disorder" "1" "--auto" "torst" "--tlsrec" "1+s" ];
-#	};
-
-# todo: move all docker, qemu etc to deploy.nix like file
+	# todo: check if right
+  services.power-profiles-daemon.enable = false;
+	services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 0;  # 🔥 КРИТИЧНО!
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      SATA_LINKPWR_ON_BAT = "min_power";
+      PCIE_ASPM_ON_BAT = "powersupersave";
+      WIFI_PWR_ON_BAT = "on";
+    };
+  };
 
 	# docker
 	virtualisation.docker.enable = true;
-#	virtualisation.docker.storageDriver = "btrfs";
-#	virtualisation.docker.daemon.settings = {
-#  	registry-mirrors = [
-#    	"https://mirror.gcr.io"  # Официальное зеркало от Google [[57]]
-#  	]; 
-#	};
-
 	# qemu
 	virtualisation.libvirtd.enable = true;
-#  virtualisation.libvirtd.qemu.enable = true;
-#virtualisation.libvirtd.qemu.ovmf.enable = true;  # UEFI поддержка (важно для Arch)
+
+	
+	# deploy vpn
+	networking.wireguard.enable = true;
+  networking.wireguard.interfaces.wg0 = {
+    ips = [ "10.0.0.3/24" ];
+    privateKeyFile = "/var/lib/wireguard/privatekey";
+    
+    peers = [
+      {
+        publicKey = "wJ0ynClXDC8OVsGpy/cgCpMmJAH8QDHrUK0PNoMJSn0=";
+        endpoint = "188.68.223.213:51820";
+        
+        allowedIPs = [ "10.0.0.0/24" ];
+        persistentKeepalive = 25;
+      }
+    ];
+  };
 }

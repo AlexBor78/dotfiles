@@ -1,7 +1,7 @@
 # /nix/lib/disks.nix
 
 # rec - to use recursive attrivutes
-# (needed to call regular funcs in BL versions)
+# (rec needed to call regular funcs in BL versions)
 { lib, ... }: rec {
 
   mkExt4 = device: {
