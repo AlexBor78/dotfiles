@@ -37,6 +37,7 @@
 	  NO_PROXY = lib.mkForce "localhost,127.0.0.1,.local,.ru";
 	};
 
+
 	# todo: check if right
   services.power-profiles-daemon.enable = false;
 	services.tlp = {
@@ -58,6 +59,10 @@
 	# qemu
 	virtualisation.libvirtd.enable = true;
 
+	# labs vpn
+	services.openvpn.servers = {
+		labsVPN = { config = '' config /etc/openvpn/ch_vpn_linux.ovpn ''; };
+	};
 	
 	# deploy vpn
 	networking.wireguard.enable = true;

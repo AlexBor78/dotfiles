@@ -13,9 +13,13 @@
 			vital
 			audacity
 			pwvucontrol
+			decent-sampler
+			dragonfly-reverb
+			lsp-plugins
 
 			# apps (gui)
 			brave
+			obsidian
 			ayugram-desktop
 			nautilus
 			gimp
@@ -37,7 +41,7 @@
 			# ctf / low-level
 			binwalk
 			acpica-tools
-			# ghidra ida-free # rare use and big size
+			ghidra #ida-free # rare use and big size
 
 			# unused
 			# bios modding or something shit
