@@ -6,9 +6,10 @@
     wget git curl 
 		htop btop 
 		tree jq
+		unzip
 
 		# hardware stuff utils
-		usbutils pciutils lm-sensors smartmontools
+		#usbutils pciutils lm-sensors smartmontools
 
 		# fs utils
 		exfatprogs btrfs-progs
