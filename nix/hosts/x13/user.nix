@@ -7,8 +7,8 @@
     extraGroups = [ 
 			"wheel" 													# sudo
 			"video" 													# brightnessctl
-			"audio" 													# 
 			"realtime"												# realtime audio
+			"audio" 													# 
 			"render"													# 
 			"networkmanager" 
 			"docker" 

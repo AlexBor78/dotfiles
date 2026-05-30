@@ -16,7 +16,7 @@
 			decent-sampler
 			dragonfly-reverb
 			lsp-plugins
-			just-a-sample # overlay
+#			just-a-sample # overlay
 
 			# apps (gui)
 			brave
@@ -62,7 +62,7 @@
 	  ".vst3/DragonflyRoomReverb.vst3".source = "${pkgs.dragonfly-reverb}/lib/vst3/DragonflyRoomReverb.vst3";
 	  ".vst3/lsp-plugins.vst3".source = "${pkgs.lsp-plugins}/lib/vst3/lsp-plugins.vst3";
 	  ".vst3/Vital.vst3".source = "${pkgs.vital}/lib/vst3/Vital.vst3";
-		".vst3/JustASample.vst3".source = "${pkgs.just-a-sample}/lib/vst3/JustASample.vst3";
+#		".vst3/JustASample.vst3".source = "${pkgs.just-a-sample}/lib/vst3/JustASample.vst3";
 	};
 
 }
