@@ -5,6 +5,7 @@
     inputs = {
       nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 			tokyonight.url = "github:mrjones2014/tokyonight.nix";
+			musnix.url = "github:musnix/musnix";
       home-manager = {
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +24,7 @@
 			};
     };
 	# todo: try "@ inputs" shit
-  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, ... }: 
+  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, musnix, ... }: 
   let
     username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
@@ -31,14 +32,16 @@
     mkSystem = hostname: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { 
-				inherit self hostname username zen-browser nixvim rofi-theme;
+				inherit self hostname username zen-browser nixvim rofi-theme musnix;
 		    myLib = import ./nix/lib { inherit (nixpkgs) lib; };
 #				theme = import ./modules/theme.nix; # unused :)
 			};
 			modules = [
+				musnix.nixosModules.musnix
 				./nix/hosts/${hostname}
 				./nix/modules/common
 				{ nixpkgs.config.allowUnfree = true; }
+#				{ nixpkgs.overlays = [ (import ./nix/overlays) ]; }
 
 				home-manager.nixosModules.home-manager {
 					home-manager.useGlobalPkgs = true;

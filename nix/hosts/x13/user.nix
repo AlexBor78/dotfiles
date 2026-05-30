@@ -8,6 +8,7 @@
 			"wheel" 													# sudo
 			"video" 													# brightnessctl
 			"audio" 													# 
+			"realtime"												# realtime audio
 			"render"													# 
 			"networkmanager" 
 			"docker" 

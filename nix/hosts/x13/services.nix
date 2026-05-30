@@ -1,4 +1,4 @@
-{ lib, pkgs, username, ... } : {
+{ lib, pkgs, username, musnix, ... } : {
 
 	# fingerprint
 	services.fprintd.enable = true;
@@ -6,6 +6,10 @@
   security.pam.services.login.fprintAuth = true;
 	security.pam.services.sshd.fprintAuth = true;
 	programs.ssh.startAgent = true;
+
+
+	# musnix
+  musnix.enable = true;
 
 	# passwords synth
   services.syncthing.enable = true;

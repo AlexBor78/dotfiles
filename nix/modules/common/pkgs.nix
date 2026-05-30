@@ -7,6 +7,7 @@
 		htop btop 
 		tree jq
 		unzip
+		file
 
 		# hardware stuff utils
 		#usbutils pciutils lm-sensors smartmontools
