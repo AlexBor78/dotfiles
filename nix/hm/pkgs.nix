@@ -7,26 +7,22 @@
 			wireguard-tools
 			# nix-ld
 
-			# music / daw
-			reaper # need vpn in russia :((
-			pipewire.jack
-			vital
-			audacity
-			pwvucontrol
-			decent-sampler
-			dragonfly-reverb
-			lsp-plugins
-#			just-a-sample # overlay
-
 			# apps (gui)
 			brave
 			obsidian
 			ayugram-desktop
+			pwvucontrol
 			nautilus
 			gimp
 			winboat
 			keepassxc
 			system-config-printer
+			
+			# for indiv proj
+			libreoffice
+			pandoc
+			texliveFull
+			nerd-fonts.dejavu-sans-mono
 
 			# minecraft
 			# modrinth-app
@@ -52,17 +48,4 @@
 #			flashrom
 #			powertop
 	]++ [ zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default];
-
-	# setting vst3 links up for reaper
-	home.file = {
-	  ".vst3/DecentSampler.vst3".source = "${pkgs.decent-sampler}/lib/vst3/DecentSampler.vst3";
-	  ".vst3/DragonflyEarlyReflections.vst3".source = "${pkgs.dragonfly-reverb}/lib/vst3/DragonflyEarlyReflections.vst3";
-	  ".vst3/DragonflyHallReverb.vst3".source = "${pkgs.dragonfly-reverb}/lib/vst3/DragonflyHallReverb.vst3";
-	  ".vst3/DragonflyPlateReverb.vst3".source = "${pkgs.dragonfly-reverb}/lib/vst3/DragonflyPlateReverb.vst3";
-	  ".vst3/DragonflyRoomReverb.vst3".source = "${pkgs.dragonfly-reverb}/lib/vst3/DragonflyRoomReverb.vst3";
-	  ".vst3/lsp-plugins.vst3".source = "${pkgs.lsp-plugins}/lib/vst3/lsp-plugins.vst3";
-	  ".vst3/Vital.vst3".source = "${pkgs.vital}/lib/vst3/Vital.vst3";
-#		".vst3/JustASample.vst3".source = "${pkgs.just-a-sample}/lib/vst3/JustASample.vst3";
-	};
-
 }
