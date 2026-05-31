@@ -14,6 +14,7 @@
 	imports = [
 		tokyonight.homeManagerModules.default
 		./pkgs.nix
+		./music.nix
 		./shell.nix
 		./nixvim.nix
 		./hyprland.nix
