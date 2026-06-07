@@ -39,6 +39,11 @@
     alsa.support32Bit = true;
   };
 
+	security.pam.loginLimits = [
+    { domain = "@audio"; item = "rtprio"; type = "-"; value = "90"; }
+    { domain = "@audio"; item = "memlock"; type = "-"; value = "unlimited"; }
+  ];
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 	services.printing.drivers = with pkgs; [ hplip ];
