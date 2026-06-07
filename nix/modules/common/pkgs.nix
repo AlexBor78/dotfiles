@@ -10,7 +10,8 @@
 		file
 
 		# hardware stuff utils
-		#usbutils pciutils lm-sensors smartmontools
+		usbutils pciutils lm_sensors smartmontools
+		linux-firmware
 
 		# fs utils
 		exfatprogs btrfs-progs
