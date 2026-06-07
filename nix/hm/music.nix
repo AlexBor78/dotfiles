@@ -13,6 +13,7 @@
 			chow-tape-model
 			chow-kick
 			calf # almost half usefull
+			noise-repellent # denoise
 
 			# doesn't work
 #			just-a-sample # overlay
@@ -31,6 +32,7 @@
 		".vst3/CHOWTapeModel.vst3".source = "${pkgs.chow-tape-model}/lib/vst3/CHOWTapeModel.vst3";
 		".lv2/calf.lv2".source = "${pkgs.calf}/lib/lv2/calf.lv2";
 		".lv2/Airwindows.lv2".source = "${pkgs.airwindows-lv2}/lib/lv2/Airwindows.lv2";
+		".lv2/nrepellent.lv2".source = "${pkgs.noise-repellent}/lib/lv2/nrepellent.lv2";
 		#"".source = "${}/lib/";
 	};
 
