@@ -8,10 +8,12 @@
 		tree jq
 		unzip
 		file
+		vim
 
 		# hardware stuff utils
 		usbutils pciutils lm_sensors smartmontools
 		linux-firmware
+		compsize
 
 		# fs utils
 		exfatprogs btrfs-progs
