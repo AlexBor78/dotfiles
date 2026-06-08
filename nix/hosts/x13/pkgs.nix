@@ -5,7 +5,7 @@
 
   environment.systemPackages = with pkgs; [
 		docker
-		qemu_kvm virt-manager virt-viewer adwaita-icon-theme OVMF
+#		qemu_kvm virt-manager virt-viewer adwaita-icon-theme OVMF
 		openvpn3
   ]; 
 
