@@ -14,6 +14,7 @@
 			ayugram-desktop
 			pwvucontrol
 			nautilus
+			thunar
 			gimp
 			winboat
 			keepassxc
@@ -33,6 +34,7 @@
 			
 			# dev tools
 			clang
+			clang-tools
 			cmake
 			gnumake
 			doxygen

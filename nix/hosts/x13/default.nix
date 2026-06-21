@@ -9,6 +9,9 @@
 		./pkgs.nix
 	];
 
+
+	programs.dconf.enable = true;
+
   # Bootloader (grub)
   boot.loader.grub = {
 		extraEntries = ''

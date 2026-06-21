@@ -12,8 +12,17 @@
 	services.fwupd.enable = true;
 
 	# blutooth
-	hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
+#	services.blueman.enable = true; # moved to overskride
+	hardware.bluetooth = {
+	  enable = true;
+	  powerOnBoot = false;
+	  settings = {
+	    General = {
+	      Enable = "Source,Sink,Media,Socket";
+	      Experimental = true;
+	    };
+	  };
+	};
 
 	# flash automount
 	services.udisks2.enable = true;
