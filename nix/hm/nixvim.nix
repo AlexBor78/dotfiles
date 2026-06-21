@@ -16,28 +16,44 @@
       shiftwidth = 2;
 			background = "dark";
 
+			spell = true;
+			spelllang = "en";
+
 			clipboard = {
 			  register = "unnamedplus";
 			  providers.wl-copy.enable = true; # for Wayland
 			};
     };
 
-		spellcheck = {
-			enable = true;
-			settings = {
-				lang = "en";
-				use_nerd_font_symbols = true;
-			};
-		};
+#		spellcheck = {
+#			enable = true;
+#			settings = {
+#				lang = "en";
+#				use_nerd_font_symbols = true;
+#			};
+#		};
 	
 		colorschemes.tokyonight = {
 	    enable = true;
 	    settings.style = "night";
 	    settings.transparent = true;
 	  };
+
+		# doxygen
+		extraPlugins = [
+#			pkgs.vimPlugins.vim-doxygen
+		];
+
+		extraConfigLua = ''
+			-- doxygen settings
+			vim.g.doxygen_enable_mappings = 1
+			vim.g.doxygen_use_double_slash = 1
+			vim.g.doxygen_param_auto = 1
+			vim.g.doxygen_return_auto = 1
+		'';
 		
 		plugins = {
-			nioce.enable = true;
+			noice.enable = true;
 			lualine.enable = true;
 			web-devicons.enable = true;
 			telescope.enable = true;
@@ -46,17 +62,17 @@
 			gitsigns.enable = true;
 			lazygit.enable = true;
 
-		  spellsitter = {
-			    enable = true;
-			    settings = {
-			      enable = true;
-			      langs = [ "en" ];
-			    };
-			  };
+#		  spellsitter = {
+#			    enable = true;
+#			    settings = {
+#			      enable = true;
+#			      langs = [ "en" ];
+#			    };
+#			  };
 
 
 		  # === TOGGLETERM: Терминал внутри Neovim ===
-		  toggle-term = {
+		  toggleterm = {
 		    enable = true;
 		    settings = {
 		      size = 80;                    # Размер терминала (в столбцах или строках)
@@ -82,8 +98,8 @@
 
 			luasnip.enable = true;
 			cmp = {
-				enalbe = true;
-				settins.source = [
+				enable = true;
+				settings.source = [
 					{ name = "nvim_lsp"; }
 					{ name = "path"; }
 					{ name = "buffer"; }
@@ -101,18 +117,7 @@
 			  };
 			};
 
-			# doxygen
-			extraPlugins = [
-		    pkgs.vimPlugins.vim-doxygen
-		  ];
 
-		  extraConfigLua = ''
-		    -- doxygen settings
-		    vim.g.doxygen_enable_mappings = 1
-		    vim.g.doxygen_use_double_slash = 1
-		    vim.g.doxygen_param_auto = 1
-		    vim.g.doxygen_return_auto = 1
-		  '';
 		};
   };
 }
