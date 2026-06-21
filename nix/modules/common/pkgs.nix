@@ -14,6 +14,7 @@
 		usbutils pciutils lm_sensors smartmontools
 		linux-firmware
 		compsize
+		overskride
 
 		# fs utils
 		exfatprogs btrfs-progs

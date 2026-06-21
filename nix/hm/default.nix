@@ -19,4 +19,7 @@
 		./nixvim.nix
 		./hyprland.nix
 	];
+
+	# for right bt audio
+	services.mpris-proxy.enable = true;
 }

@@ -18,6 +18,8 @@
 		wl-clipboard
 		playerctl
 		bibata-cursors
+		gnome-themes-extra
+#		dconf
 	];
 
   # hypr config
@@ -45,4 +47,26 @@
 
 	# wallpaper
 	home.file.".config/wallpaper.png".source = "${dotsroot}/assets/wallpaper.png";
+
+	# dark theme
+	gtk = {
+  enable = true;
+  theme = {
+    name = "Adwaita-dark";
+    package = pkgs.gnome-themes-extra;
+  };
+	gtk4.theme = null;
+  gtk3.extraConfig = {
+    gtk-application-prefer-dark-theme = true;
+  };
+  gtk4.extraConfig = {
+    gtk-application-prefer-dark-theme = true;
+  };
+};
+
+dconf.settings = {
+  "org/gnome/desktop/interface" = {
+    color-scheme = "prefer-dark";
+  };
+};
 }
