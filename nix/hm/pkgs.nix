@@ -19,6 +19,7 @@
 			winboat
 			keepassxc
 			system-config-printer
+			element-desktop
 			
 			# for indiv proj
 			texlivePackages.hyphen-russian
