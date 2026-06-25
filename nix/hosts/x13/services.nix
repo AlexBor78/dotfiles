@@ -32,14 +32,14 @@
   };
 
 	# todo: do it proprioly
-	networking.proxy.default = "socks5://127.0.0.1:10808";
-	systemd.services.nix-daemon.environment = {
-	  http_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
-	  https_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
-	  ALL_PROXY = lib.mkForce "socks5h://127.0.0.1:10808";
-	  # Исключения: локальные адреса и .ru домены
-	  NO_PROXY = lib.mkForce "localhost,127.0.0.1,.local,.ru";
-	};
+#	networking.proxy.default = "socks5://127.0.0.1:10808";
+#	systemd.services.nix-daemon.environment = {
+#	  http_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
+#	  https_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
+#	  ALL_PROXY = lib.mkForce "socks5h://127.0.0.1:10808";
+#	  # Исключения: локальные адреса и .ru домены
+#	  NO_PROXY = lib.mkForce "localhost,127.0.0.1,.local,.ru";
+#	};
 
 
 	# todo: check if right

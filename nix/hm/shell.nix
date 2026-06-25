@@ -46,6 +46,7 @@
 			  eval "$(ssh-agent -s)"
 			fi
 			eval "$(starship init zsh)"
+			export SHELL=$(which zsh)
 			fastfetch
 		'';
 

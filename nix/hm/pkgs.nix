@@ -20,6 +20,7 @@
 			keepassxc
 			system-config-printer
 			element-desktop
+			motrix
 			
 			# for indiv proj
 			texlivePackages.hyphen-russian
