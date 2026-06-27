@@ -46,6 +46,9 @@
 			binwalk
 			acpica-tools
 			ghidra #ida-free # rare use and big size
+			rizinPlugins.rz-ghidra
+#			ida-free
+			rizin cutter
 			cliqr zbar
 
 			# unused

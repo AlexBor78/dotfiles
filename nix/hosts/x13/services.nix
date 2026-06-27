@@ -55,6 +55,9 @@
       SATA_LINKPWR_ON_BAT = "min_power";
       PCIE_ASPM_ON_BAT = "powersupersave";
       WIFI_PWR_ON_BAT = "on";
+
+			START_CHARGE_THRESH_BAT0 = 75;
+			STOP_CHARGE_THRESH_BAT0 = 80;
     };
   };
 
