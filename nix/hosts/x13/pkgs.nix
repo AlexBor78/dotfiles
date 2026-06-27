@@ -7,6 +7,7 @@
 		docker
 #		qemu_kvm virt-manager virt-viewer adwaita-icon-theme OVMF
 		openvpn3
+		stdenv.cc.cc.lib
   ]; 
 
 #	hardware.cpu.x86.msr.settings.allow-writes = "on";
