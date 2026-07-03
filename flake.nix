@@ -16,15 +16,19 @@
       };
       nixvim = {
         url = "github:nix-community/nixvim";
-        inputs.nixpkgs.follows = "nixpkgs";
+#        inputs.nixpkgs.follows = "nixpkgs";
       };
 			rofi-theme = {
 			  url = "github:AlexBor78/Tokyonight-rofi-theme";
 			  flake = false;
 			};
+			sops-nix = {
+				url = "github:Mic92/sops-nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+			};
     };
 	# todo: try "@ inputs" shit
-  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, musnix, ... }: 
+  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, musnix, sops-nix, ... }: 
   let
     username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
@@ -32,7 +36,7 @@
     mkSystem = hostname: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { 
-				inherit self hostname username zen-browser nixvim rofi-theme musnix;
+				inherit self hostname username zen-browser nixvim rofi-theme musnix sops-nix;
 		    myLib = import ./nix/lib { inherit (nixpkgs) lib; };
 #				theme = import ./modules/theme.nix; # unused :)
 			};
@@ -40,6 +44,7 @@
 				musnix.nixosModules.musnix
 				./nix/hosts/${hostname}
 				./nix/modules/common
+				sops-nix.nixosModules.sops
 				{ nixpkgs.config.allowUnfree = true; }
 #				{ nixpkgs.overlays = [ (import ./nix/overlays) ]; }
 

@@ -7,7 +7,6 @@
 	security.pam.services.sshd.fprintAuth = true;
 	programs.ssh.startAgent = true;
 
-
 	# musnix
   musnix.enable = true;
 
@@ -31,7 +30,7 @@
     settingsFile = "/etc/xray/config.json";
   };
 
-	# todo: do it proprioly
+	# todo: do it properly
 #	networking.proxy.default = "socks5://127.0.0.1:10808";
 #	systemd.services.nix-daemon.environment = {
 #	  http_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
@@ -67,9 +66,10 @@
 	virtualisation.libvirtd.enable = true;
 
 	# labs vpn
-	services.openvpn.servers = {
-		labsVPN = { config = '' config /etc/openvpn/ch_vpn_linux.ovpn ''; };
-	};
+	# tmp turn off, bcs colides with local ips
+#	services.openvpn.servers = {
+#		labsVPN = { config = '' config /etc/openvpn/ch_vpn_linux.ovpn ''; };
+#	};
 	
 	# deploy vpn
 	networking.wireguard.enable = true;

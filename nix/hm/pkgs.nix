@@ -20,7 +20,9 @@
 			keepassxc
 			system-config-printer
 			element-desktop
-			motrix
+			motrix  # downloads manager
+			clapper # player
+			vlc  # if clapper goes bad 
 			
 			# for indiv proj
 			texlivePackages.hyphen-russian
