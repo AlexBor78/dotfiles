@@ -4,8 +4,10 @@
 			audacity
 			reaper
 			pipewire.jack
+			alsa-scarlett-gui
 
-			vital
+#			vital
+			surge-xt # vital analog
 			decent-sampler
 			lsp-plugins # cool basic stuff
 			dragonfly-reverb
@@ -21,7 +23,9 @@
 
 	# setting vst3 links up for reaper
 	home.file = {
-	  ".vst3/Vital.vst3".source = "${pkgs.vital}/lib/vst3/Vital.vst3";
+	  #".vst3/vital.vst3".source = "${pkgs.vital}/lib/vst3/vital.vst3";
+	  ".vst3/Surge XT.vst3".source = "${pkgs.surge-xt}/lib/vst3/Surge XT.vst3";
+	  ".vst3/Surge XT Effects.vst3".source = "${pkgs.surge-xt}/lib/vst3/Surge XT Effects.vst3";
 	  ".vst3/DecentSampler.vst3".source = "${pkgs.decent-sampler}/lib/vst3/DecentSampler.vst3";
 	  ".vst3/lsp-plugins.vst3".source = "${pkgs.lsp-plugins}/lib/vst3/lsp-plugins.vst3";
 	  ".vst3/DragonflyEarlyReflections.vst3".source = "${pkgs.dragonfly-reverb}/lib/vst3/DragonflyEarlyReflections.vst3";
