@@ -61,7 +61,7 @@
 
   in {
 
-#    nixosConfigurations.t480 = mkSystem "t480"; # tmp turned off
+    nixosConfigurations.t480 = mkSystem "t480";
     nixosConfigurations.x13 = mkSystem "x13";
   };
 }
