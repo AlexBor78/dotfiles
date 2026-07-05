@@ -1,10 +1,12 @@
 { lib, pkgs, username, musnix, ... } : {
 
+	# todo: make itnwork on T480
 	# fingerprint
-	services.fprintd.enable = true;
-	security.pam.services.sudo.fprintAuth = true;
-  security.pam.services.login.fprintAuth = true;
-	security.pam.services.sshd.fprintAuth = true;
+#	services.fprintd.enable = true;
+#	security.pam.services.sudo.fprintAuth = true;
+#  security.pam.services.login.fprintAuth = true;
+#	security.pam.services.sshd.fprintAuth = true;
+
 	programs.ssh.startAgent = true;
 
 	# musnix
@@ -40,7 +42,6 @@
 #	  NO_PROXY = lib.mkForce "localhost,127.0.0.1,.local,.ru";
 #	};
 
-
 	# todo: check if right
   services.power-profiles-daemon.enable = false;
 	services.tlp = {
@@ -57,11 +58,14 @@
 
 			START_CHARGE_THRESH_BAT0 = 75;
 			STOP_CHARGE_THRESH_BAT0 = 80;
+
+			START_CHARGE_THRESH_BAT1 = 75;
+			STOP_CHARGE_THRESH_BAT1 = 80;
     };
   };
 
 	# docker
-	virtualisation.docker.enable = true;
+	#virtualisation.docker.enable = true;
 	# qemu
 	#virtualisation.libvirtd.enable = true;
 

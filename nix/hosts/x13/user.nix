@@ -4,6 +4,7 @@
 	programs.zsh.enable = true;
   users.users.${username} = {
     isNormalUser = true;
+  	shell = pkgs.zsh;
     extraGroups = [ 
 			"wheel" 													# sudo
 			"video" 													# brightnessctl
@@ -14,6 +15,5 @@
 			"docker" 
 			"libvirtd" "kvm" "qemu-libvirtd"
 		];
-  	shell = pkgs.zsh;
   };
 }

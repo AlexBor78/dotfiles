@@ -5,6 +5,7 @@
 	security.pam.services.sudo.fprintAuth = true;
   security.pam.services.login.fprintAuth = true;
 	security.pam.services.sshd.fprintAuth = true;
+
 	programs.ssh.startAgent = true;
 
 	# musnix
@@ -39,7 +40,6 @@
 #	  # Исключения: локальные адреса и .ru домены
 #	  NO_PROXY = lib.mkForce "localhost,127.0.0.1,.local,.ru";
 #	};
-
 
 	# todo: check if right
   services.power-profiles-daemon.enable = false;
