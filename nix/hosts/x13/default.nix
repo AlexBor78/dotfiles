@@ -25,8 +25,8 @@
 		'';
   };
 
+	# amd_pstate
   boot.kernelParams = [
-		# enable amd_pstate
     "nohz_idle=on"
     "processor.ignore_ppc=1"
     "acpi_cpufreq.enable_pcc=false"

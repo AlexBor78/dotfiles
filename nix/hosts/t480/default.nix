@@ -9,7 +9,7 @@
 		./pkgs.nix
 	];
 
-
+	# for dark theme
 	programs.dconf.enable = true;
 
   # Bootloader (grub)
@@ -25,12 +25,11 @@
 		'';
   };
 
-  boot.kernelParams = [
-		# enable amd_pstate
-    "nohz_idle=on"
-    "processor.ignore_ppc=1"
-    "acpi_cpufreq.enable_pcc=false"
-    "amd_pstate=disable"
-  ];
+#  boot.kernelParams = [
+#    "nohz_idle=on"
+#    "processor.ignore_ppc=1"
+#    "acpi_cpufreq.enable_pcc=false"
+#    "amd_pstate=disable"
+#  ];
 
 }
