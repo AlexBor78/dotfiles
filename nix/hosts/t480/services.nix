@@ -26,21 +26,13 @@
     };
   };
 
-	# xray vpn
-	services.xray = {
-    enable = true;
-    settingsFile = "/etc/xray/config.json";
-  };
+#	# xray vpn
+#	services.xray = {
+#    enable = true;
+#    settingsFile = "/etc/xray/config.json";
+#  };
 
-	# todo: do it properly
-#	networking.proxy.default = "socks5://127.0.0.1:10808";
-#	systemd.services.nix-daemon.environment = {
-#	  http_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
-#	  https_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
-#	  ALL_PROXY = lib.mkForce "socks5h://127.0.0.1:10808";
-#	  # Исключения: локальные адреса и .ru домены
-#	  NO_PROXY = lib.mkForce "localhost,127.0.0.1,.local,.ru";
-#	};
+	services.happ.enable = true;
 
 	# todo: check if right
   services.power-profiles-daemon.enable = false;

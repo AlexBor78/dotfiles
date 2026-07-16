@@ -4,6 +4,10 @@
 	imports = [
 		./hardware-configuration.nix
 		./disks.nix
+		(builtins.fetchTarball {
+				url = "https://github.com/MrShitFox/happ-nixos/archive/main.tar.gz";
+			sha256 = "19x5zvki6xcy6k277rfwmx29v54nhpfb673a8majm045g89knrrj";
+		} + "/happ-module.nix")
 		./services.nix
 		./user.nix
 		./pkgs.nix
