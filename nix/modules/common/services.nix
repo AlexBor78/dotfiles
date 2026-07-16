@@ -28,6 +28,9 @@
 	services.udisks2.enable = true;
 	security.polkit.enable = true;
 
+	# phone files transpher
+	services.gvfs.enable = true;
+
 	# upower
 	services.upower.enable = true;
 	services.udev.enable = true;

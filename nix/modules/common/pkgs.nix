@@ -13,6 +13,7 @@
 		# hardware stuff utils
 		usbutils pciutils lm_sensors smartmontools
 		linux-firmware
+		intel-gpu-tools
 		compsize
 		overskride
 
