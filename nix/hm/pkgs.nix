@@ -11,6 +11,14 @@
 			brave
 			vscodium # fast non-english text edit, etc
 			obsidian
+			blender
+			kdePackages.kdenlive
+			python3
+			python3Packages.pillow
+			python3Packages.numpy
+			python3Packages.opencv4
+			imagemagick
+			obs-studio
 			ayugram-desktop
 			pwvucontrol
 			nautilus
