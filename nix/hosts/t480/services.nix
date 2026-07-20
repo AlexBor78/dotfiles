@@ -10,7 +10,7 @@
 	programs.ssh.startAgent = true;
 
 	# musnix
-  musnix.enable = true;
+#  musnix.enable = true;
 
 	# passwords synth
   services.syncthing.enable = true;

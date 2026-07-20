@@ -7,10 +7,8 @@
 			wireguard-tools
 			# nix-ld
 
-			# apps (gui)
-			brave
-			vscodium # fast non-english text edit, etc
-			obsidian
+
+			# video editing
 			blender
 			kdePackages.kdenlive
 			python3
@@ -19,6 +17,11 @@
 			python3Packages.opencv4
 			imagemagick
 			obs-studio
+
+			# desktop apps (gui)
+			brave
+			vscodium
+			obsidian
 			ayugram-desktop
 			pwvucontrol
 			nautilus
@@ -50,7 +53,6 @@
 			cmake
 			gnumake
 			doxygen
-		#	docker # installed to system pkgs in host pkgs
 			
 			# ctf / low-level
 			binwalk
