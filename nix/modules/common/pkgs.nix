@@ -1,6 +1,7 @@
 # /nix/modules/common/user.nix
 
 { config, lib, pkgs, username, zen-browser, ... } : {
+nixpkgs.config.permittedInsecurePackages = [ "electron-40.10.5" ];
 
   environment.systemPackages = with pkgs; [
     wget git curl 

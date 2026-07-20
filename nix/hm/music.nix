@@ -6,7 +6,7 @@
 			pipewire.jack
 			alsa-scarlett-gui
 
-#			vital
+			vital
 			surge-xt # vital analog
 			decent-sampler
 			lsp-plugins # cool basic stuff
@@ -23,7 +23,7 @@
 
 	# setting vst3 links up for reaper
 	home.file = {
-	  #".vst3/vital.vst3".source = "${pkgs.vital}/lib/vst3/vital.vst3";
+	  ".vst3/vital.vst3".source = "${pkgs.vital}/lib/vst3/vital.vst3";
 	  ".vst3/Surge XT.vst3".source = "${pkgs.surge-xt}/lib/vst3/Surge XT.vst3";
 	  ".vst3/Surge XT Effects.vst3".source = "${pkgs.surge-xt}/lib/vst3/Surge XT Effects.vst3";
 	  ".vst3/DecentSampler.vst3".source = "${pkgs.decent-sampler}/lib/vst3/DecentSampler.vst3";
