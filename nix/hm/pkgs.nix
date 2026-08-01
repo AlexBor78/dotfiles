@@ -7,7 +7,6 @@
 			wireguard-tools
 			# nix-ld
 
-
 			# video editing
 			blender
 			kdePackages.kdenlive
@@ -43,9 +42,13 @@
 			nerd-fonts.dejavu-sans-mono
 
 			# minecraft
-			# modrinth-app
-			# prismlauncher
-			# jdk17
+			#jdk17 
+			jdk25
+			#modrinth-app
+			modrinth-app-unwrapped
+			prismlauncher
+			pandora-launcher
+			atlauncher
 			
 			# dev tools
 			clang
