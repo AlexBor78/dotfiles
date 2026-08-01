@@ -3,52 +3,50 @@
 { pkgs, zen-browser, ... }: {
 	home.packages = with pkgs; [
 			# cli tools
-			freerdp
+			#freerdp
 			wireguard-tools
 			# nix-ld
 
 			# video editing
-			blender
-			kdePackages.kdenlive
-			python3
-			python3Packages.pillow
-			python3Packages.numpy
-			python3Packages.opencv4
-			imagemagick
-			obs-studio
+			#blender
+			#kdePackages.kdenlive
+			#python3
+			#python3Packages.pillow
+			#python3Packages.numpy
+			#python3Packages.opencv4
+			#imagemagick
+			#obs-studio
 
 			# desktop apps (gui)
-			brave
-			vscodium
+			#brave
+			#vscodium
 			obsidian
 			ayugram-desktop
 			pwvucontrol
 			nautilus
-			thunar
-			gimp
-			winboat
+			#thunar
+			#gimp
 			keepassxc
 			system-config-printer
 			element-desktop
 			motrix  # downloads manager
 			clapper # player
-			vlc  # if clapper goes bad 
+			vlc  		# if clapper goes bad 
 			
-			# for indiv proj
-			texlivePackages.hyphen-russian
-			libreoffice
-			pandoc
-			texliveFull
-			nerd-fonts.dejavu-sans-mono
+#			# for indiv proj
+#			texlivePackages.hyphen-russian
+#			libreoffice
+#			pandoc
+#			texliveFull
+#			nerd-fonts.dejavu-sans-mono
 
 			# minecraft
 			#jdk17 
 			jdk25
-			#modrinth-app
-			modrinth-app-unwrapped
-			prismlauncher
 			pandora-launcher
-			atlauncher
+			#modrinth-app
+#			modrinth-app-unwrapped
+#			prismlauncher
 			
 			# dev tools
 			clang
@@ -60,7 +58,7 @@
 			# ctf / low-level
 			binwalk
 			acpica-tools
-			ghidra #ida-free # rare use and big size
+			#ghidra # unused for now
 			rizinPlugins.rz-ghidra
 #			ida-free
 			rizin cutter
