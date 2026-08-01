@@ -5,6 +5,7 @@
 			reaper
 			pipewire.jack
 			alsa-scarlett-gui
+			patchage # patch bay for jack
 
 			vital
 			surge-xt # vital analog

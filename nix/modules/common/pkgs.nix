@@ -7,7 +7,7 @@ nixpkgs.config.permittedInsecurePackages = [ "electron-40.10.5" ];
     wget git curl 
 		htop btop 
 		tree jq
-		unzip
+		zip unzip
 		file
 		vim
 
