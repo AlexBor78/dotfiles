@@ -5,6 +5,7 @@
 { config, pkgs, dotsroot, rofi-theme, ... } : {
 
 	home.packages = with pkgs; [
+		quickshell
 		rofi
 		mako
 		awww
@@ -30,6 +31,13 @@
   # hypr config
   home.file.".config/hypr" = {
     source = config.lib.file.mkOutOfStoreSymlink "${dotsroot}/hypr"; 
+    recursive = true;
+    force = true;
+  };
+
+  # quickshell
+  home.file.".config/quickshell" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${dotsroot}/quickshell"; 
     recursive = true;
     force = true;
   };
