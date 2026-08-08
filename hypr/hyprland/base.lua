@@ -20,12 +20,12 @@ for key, value in pairs(env) do
 	hl.env(key, value)
 end
 
--- start on Hyprland start
+-- launch on Hyprland start
 hl.on("hyprland.start", function()
 	hl.exec_cmd("wl-paste --watch cliphist store &")
 	hl.exec_cmd("mako")
 	hl.exec_cmd("awww-daemon ")
-	hl.exec_cmd("awww img ~/dotfiles/assets/wallpaper.png --transition-type bottom")
+	hl.exec_cmd("awww img ~/dotfiles/assets/wallpaper.png --transition-type bottom") -- todo: launch for every monitor
 end)
 
 -- inputs
