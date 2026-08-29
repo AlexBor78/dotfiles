@@ -20,7 +20,6 @@
 		playerctl
 		bibata-cursors
 		gnome-themes-extra
-#		dconf
 	];
 
 	# hypr stubs for lua
@@ -63,19 +62,22 @@
 
 	# dark theme
 	gtk = {
-  enable = true;
-  theme = {
-    name = "Adwaita-dark";
-    package = pkgs.gnome-themes-extra;
-  };
-	gtk4.theme = null;
-  gtk3.extraConfig = {
-    gtk-application-prefer-dark-theme = true;
-  };
-  gtk4.extraConfig = {
-    gtk-application-prefer-dark-theme = true;
-  };
-};
+		enable = true;
+		theme = {
+			name = "Adwaita-dark";
+			package = pkgs.gnome-themes-extra;
+		};
+		iconTheme = {
+			name = "Adwaita";
+			package = pkgs.adwaita-icon-theme;
+		};
+
+		gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+		gtk4 = {
+			theme = null;
+			extraConfig.gtk-application-prefer-dark-theme = true;
+		};
+	};
 
 dconf.settings = {
   "org/gnome/desktop/interface" = {

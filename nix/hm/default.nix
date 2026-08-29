@@ -1,6 +1,6 @@
 # /nix/home/default.nix
 
-{ config, lib, pkgs, username, dotsroot, nixvim, tokyonight, zen-browser, ... } : {
+{ config, lib, pkgs, username, dotsroot, nixvim, tokyonight, zen-browser, reaper-flake, ... } : {
 	
 	# enable home-managegr
   programs.home-manager.enable = true;

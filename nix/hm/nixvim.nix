@@ -6,6 +6,10 @@
     nixvim.homeModules.nixvim
   ];
 
+	home.packages = with pkgs; [
+		nerd-fonts.jetbrains-mono
+	];
+
   programs.nixvim = {
     enable = true;
     
