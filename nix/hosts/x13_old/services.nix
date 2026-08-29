@@ -1,16 +1,15 @@
 { lib, pkgs, username, musnix, ... } : {
 
-	# todo: make itnwork on T480
 	# fingerprint
-#	services.fprintd.enable = true;
-#	security.pam.services.sudo.fprintAuth = true;
-#  security.pam.services.login.fprintAuth = true;
-#	security.pam.services.sshd.fprintAuth = true;
+	services.fprintd.enable = true;
+	security.pam.services.sudo.fprintAuth = true;
+  security.pam.services.login.fprintAuth = true;
+	security.pam.services.sshd.fprintAuth = true;
 
 	programs.ssh.startAgent = true;
 
 	# musnix
-#  musnix.enable = true;
+  musnix.enable = true;
 
 	# passwords synth
   services.syncthing.enable = true;
@@ -26,13 +25,21 @@
     };
   };
 
-#	# xray vpn
-#	services.xray = {
-#    enable = true;
-#    settingsFile = "/etc/xray/config.json";
-#  };
+	# xray vpn
+	services.xray = {
+    enable = true;
+    settingsFile = "/etc/xray/config.json";
+  };
 
-	services.happ.enable = true;
+	# todo: do it properly
+#	networking.proxy.default = "socks5://127.0.0.1:10808";
+#	systemd.services.nix-daemon.environment = {
+#	  http_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
+#	  https_proxy = lib.mkForce "socks5h://127.0.0.1:10808";
+#	  ALL_PROXY = lib.mkForce "socks5h://127.0.0.1:10808";
+#	  # Исключения: локальные адреса и .ru домены
+#	  NO_PROXY = lib.mkForce "localhost,127.0.0.1,.local,.ru";
+#	};
 
 	# todo: check if right
   services.power-profiles-daemon.enable = false;
@@ -50,16 +57,13 @@
 
 			START_CHARGE_THRESH_BAT0 = 75;
 			STOP_CHARGE_THRESH_BAT0 = 80;
-
-			START_CHARGE_THRESH_BAT1 = 75;
-			STOP_CHARGE_THRESH_BAT1 = 80;
     };
   };
 
 	# docker
-	#virtualisation.docker.enable = true;
+	virtualisation.docker.enable = true;
 	# qemu
-	#virtualisation.libvirtd.enable = true;
+	virtualisation.libvirtd.enable = true;
 
 	# labs vpn
 	# tmp turn off, bcs colides with local ips

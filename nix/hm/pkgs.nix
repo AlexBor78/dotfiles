@@ -17,6 +17,9 @@
 			#imagemagick
 			#obs-studio
 
+			# fonts; themes; etc
+			nerd-fonts.jetbrains-mono
+
 			# desktop apps (gui)
 			#brave
 			#vscodium

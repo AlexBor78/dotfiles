@@ -1,11 +1,16 @@
-{ pkgs, ... }: {
+{ pkgs, reaper-flake, ... }: {
+
+	imports = [
+		reaper-flake.homeModules.reaper
+	];
+
 	home.packages = with pkgs; [
 			# music / daw
 			audacity
-			reaper
+			#reaper # using reaper-flake down in this file
 			pipewire.jack
 			alsa-scarlett-gui
-			patchage # patch bay for jack
+			#patchage # patch bay for jack
 
 			vital
 			surge-xt # vital analog
@@ -18,9 +23,42 @@
 			calf # almost half usefull
 			noise-repellent # denoise
 
+			ardour
+			x42-plugins
+
 			# doesn't work
 #			just-a-sample # overlay
-];
+	];
+
+programs.reaper = {
+  enable = true;
+  
+	theme = {
+    active = "Reapertips Theme";
+    packages = [
+      reaper-flake.packages.${pkgs.system}.reapertips-theme
+    ];
+  };
+
+	ini.sections = {
+		reaper = {
+			projectpath = "/data/hobbies/music/projects/reaper";
+			projectcreatesubdir = "1";
+		};
+	};
+
+  extensions.reapack = {
+    enable = true;
+    repositories = [
+      { name = "ReaTeam Themes"; url = "https://github.com/ReaTeam/Themes/raw/master/index.xml"; }
+    ];
+    packages = [
+    ];
+  };
+
+  #experimental.swell-wayland.enable = true;
+};
+
 
 	# setting vst3 links up for reaper
 	home.file = {
@@ -35,9 +73,11 @@
 	  ".vst3/DragonflyRoomReverb.vst3".source = "${pkgs.dragonfly-reverb}/lib/vst3/DragonflyRoomReverb.vst3";
 		".vst3/ChowKick.vst3".source = "${pkgs.chow-kick}/lib/vst3/ChowKick.vst3";
 		".vst3/CHOWTapeModel.vst3".source = "${pkgs.chow-tape-model}/lib/vst3/CHOWTapeModel.vst3";
+
 		".lv2/calf.lv2".source = "${pkgs.calf}/lib/lv2/calf.lv2";
 		".lv2/Airwindows.lv2".source = "${pkgs.airwindows-lv2}/lib/lv2/Airwindows.lv2";
 		".lv2/nrepellent.lv2".source = "${pkgs.noise-repellent}/lib/lv2/nrepellent.lv2";
+		".lv2/x42-plugins.lv2".source = "${pkgs.x42-plugins}/lib/lv2";
 		#"".source = "${}/lib/";
 	};
 

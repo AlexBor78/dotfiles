@@ -4,31 +4,44 @@
   description = "my main desktop nixos config";
     inputs = {
       nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-			tokyonight.url = "github:mrjones2014/tokyonight.nix";
-#			musnix.url = "github:musnix/musnix";
       home-manager = {
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
+      };
+			sops-nix = {
+				url = "github:Mic92/sops-nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+			};
+
+      nixvim = {
+        url = "github:nix-community/nixvim";
+#        inputs.nixpkgs.follows = "nixpkgs";
       };
       zen-browser = {
         url = "github:youwen5/zen-browser-flake";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-      nixvim = {
-        url = "github:nix-community/nixvim";
-#        inputs.nixpkgs.follows = "nixpkgs";
-      };
+
+			# themes
+			tokyonight.url = "github:mrjones2014/tokyonight.nix";
 			rofi-theme = {
 			  url = "github:AlexBor78/Tokyonight-rofi-theme";
 			  flake = false;
 			};
-			sops-nix = {
-				url = "github:Mic92/sops-nix";
+
+			# music
+#			musnix.url = "github:musnix/musnix";
+			reaper-flake.url = "github:9Prestidigitator/reaper-flake";
+
+
+			# genshin
+			aagl = {
+				url = "github:ezKEa/aagl-gtk-on-nix";
         inputs.nixpkgs.follows = "nixpkgs";
 			};
     };
 	# todo: try "@ inputs" shit
-  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, ... }: 
+  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, ... }: 
   let
     username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
@@ -36,16 +49,22 @@
     mkSystem = hostname: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { 
-				inherit self hostname username zen-browser nixvim rofi-theme sops-nix;
+				inherit self hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl;
 		    myLib = import ./nix/lib { inherit (nixpkgs) lib; };
 #				theme = import ./modules/theme.nix; # unused :)
 			};
 			modules = [
-#				musnix.nixosModules.musnix
+				{ nixpkgs.config.allowUnfree = true; }
 				./nix/hosts/${hostname}
 				./nix/modules/common
 				sops-nix.nixosModules.sops
-				{ nixpkgs.config.allowUnfree = true; }
+#				musnix.nixosModules.musnix
+				aagl.nixosModules.default
+        {
+          nix.settings = aagl.nixConfig;
+          programs.anime-game-launcher.enable = true;
+        }
+				
 #				{ nixpkgs.overlays = [ (import ./nix/overlays) ]; }
 
 				home-manager.nixosModules.home-manager {
@@ -53,7 +72,7 @@
 					home-manager.useUserPackages = true;
 					home-manager.users.${username} = import ./nix/hm;
 					home-manager.extraSpecialArgs = { 
-						inherit self hostname username libroot dotsroot nixvim tokyonight rofi-theme zen-browser;
+						inherit self hostname username libroot dotsroot nixvim tokyonight rofi-theme zen-browser reaper-flake;
 					};
 				}
 			];

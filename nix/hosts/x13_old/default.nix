@@ -4,16 +4,12 @@
 	imports = [
 		./hardware-configuration.nix
 		./disks.nix
-		(builtins.fetchTarball {
-				url = "https://github.com/MrShitFox/happ-nixos/archive/main.tar.gz";
-			sha256 = "1la3yprlw4k5d4y49hfwlvr51gyncysy2hx2yyzswnjm6nnxz3wn";
-		} + "/happ-module.nix")
 		./services.nix
 		./user.nix
 		./pkgs.nix
 	];
 
-	# for dark theme
+
 	programs.dconf.enable = true;
 
   # Bootloader (grub)
@@ -29,11 +25,12 @@
 		'';
   };
 
-#  boot.kernelParams = [
-#    "nohz_idle=on"
-#    "processor.ignore_ppc=1"
-#    "acpi_cpufreq.enable_pcc=false"
-#    "amd_pstate=disable"
-#  ];
+	# amd_pstate
+  boot.kernelParams = [
+    "nohz_idle=on"
+    "processor.ignore_ppc=1"
+    "acpi_cpufreq.enable_pcc=false"
+    "amd_pstate=disable"
+  ];
 
 }
