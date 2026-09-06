@@ -39,9 +39,15 @@
 				url = "github:ezKEa/aagl-gtk-on-nix";
         inputs.nixpkgs.follows = "nixpkgs";
 			};
+
+			# study
+			kumir = {
+				url = "github:ProggerX/kumir-nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+			};
     };
 	# todo: try "@ inputs" shit
-  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, ... }: 
+  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, ... }: 
   let
     username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
@@ -49,7 +55,7 @@
     mkSystem = hostname: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { 
-				inherit self hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl;
+				inherit self hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl kumir;
 		    myLib = import ./nix/lib { inherit (nixpkgs) lib; };
 #				theme = import ./modules/theme.nix; # unused :)
 			};

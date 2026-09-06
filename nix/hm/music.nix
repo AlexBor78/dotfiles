@@ -22,9 +22,10 @@
 			chow-kick
 			calf # almost half usefull
 			noise-repellent # denoise
+			openutau
 
-			ardour
-			x42-plugins
+#			ardour
+#			x42-plugins
 
 			# doesn't work
 #			just-a-sample # overlay
