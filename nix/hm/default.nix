@@ -15,6 +15,7 @@
 		tokyonight.homeManagerModules.default
 		./pkgs.nix
 		./music.nix
+		./study.nix
 		./shell.nix
 		./nixvim.nix
 		./hyprland.nix

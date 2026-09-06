@@ -26,6 +26,11 @@
     };
   };
 
+	# Virtual Box
+	virtualisation.virtualbox.host.enable = true;
+	users.extraGroups.vboxusers.members = [ "${username}" ];
+	virtualisation.virtualbox.host.enableExtensionPack = true;
+
 #	# xray vpn
 #	services.xray = {
 #    enable = true;
