@@ -31,5 +31,8 @@ nixpkgs.config.permittedInsecurePackages = [ "electron-40.10.5" ];
 		rsync
 		dosfstools
 		ntfs3g
+
+		# falback files dialogs
+		zenity
   ];
 }
