@@ -68,13 +68,18 @@
 	# xdg portals
 	xdg.portal = {
 	  enable = true;
-	  config.common.default = [ "wlr" "gtk" ];
-	  configPackages = with pkgs; [
-	    xdg-desktop-portal-wlr  # screencast, csreenshoots etc for wayland 
-	    xdg-desktop-portal-gtk  # file dialogs etc
-	  ];
+		#wlr.enable = true;
+
+	  #config.common.default = [ "gtk" ];
+#		config.common."org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+		#config.common."org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+
+	  #configPackages = with pkgs; [
+	  #  #xdg-desktop-portal-wlr  # screencast, csreenshoots etc for wayland 
+	  #  xdg-desktop-portal-gtk  # file dialogs etc
+	  #];
 
 		# todo: needs for assertion, will be deleted in future :)
-		extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
+		extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 	};
 }

@@ -12,6 +12,7 @@
 				url = "github:Mic92/sops-nix";
         inputs.nixpkgs.follows = "nixpkgs";
 			};
+			nix-flatpak.url = "github:gmodena/nix-flatpak";
 
       nixvim = {
         url = "github:nix-community/nixvim";
@@ -34,6 +35,7 @@
 			reaper-flake.url = "github:9Prestidigitator/reaper-flake";
 
 
+
 			# genshin
 			aagl = {
 				url = "github:ezKEa/aagl-gtk-on-nix";
@@ -47,7 +49,7 @@
 			};
     };
 	# todo: try "@ inputs" shit
-  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, ... }: 
+  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, nix-flatpak, ... }: 
   let
     username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
@@ -55,7 +57,7 @@
     mkSystem = hostname: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { 
-				inherit self hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl kumir;
+				inherit self hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl kumir nix-flatpak;
 		    myLib = import ./nix/lib { inherit (nixpkgs) lib; };
 #				theme = import ./modules/theme.nix; # unused :)
 			};
@@ -65,6 +67,7 @@
 				./nix/modules/common
 				sops-nix.nixosModules.sops
 #				musnix.nixosModules.musnix
+				nix-flatpak.nixosModules.nix-flatpak
 				aagl.nixosModules.default
         {
           nix.settings = aagl.nixConfig;
