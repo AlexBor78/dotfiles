@@ -7,7 +7,15 @@ local browser			= "zen"
 
 local menu = "rofi -show drun -prompt \"Search: \""
 local clipboard = "cliphist list | rofi -dmenu -p \"Clipboard:\" | cliphist decode | wl-copy"
-local screenshoot =  "grim -g \"$(slurp & sleep 0.2 && hyprctl --batch 'keyword animations:enabled 0' > /dev/null)\" - | wl-copy; hyprctl --batch 'keyword animations:enabled 1'"
+-- local screenshoot =  "grim -g \"$(slurp & sleep 0.2 && hyprctl --batch 'keyword animations:enabled 0' > /dev/null)\" - | wl-copy; hyprctl --batch 'keyword animations:enabled 1'"
+--
+local screenshot = "hyprshot -z -m region"
+local screenshot_win = "hyprshot -z -m active -m window"
+local screenshot_out = "hyprshot -z -m active -m output"
+
+local alt_screenshot = "hyprshot -z -m region"
+local alt_screenshot_win = "hyprshot -z -m active -m window"
+local alt_screenshot_out = "hyprshot -z -m active -m output"
 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 hl.gesture({ fingers = 3, direction = "up", 				action = "special", workspace_name = "z" })
@@ -23,7 +31,14 @@ hl.bind(mainMod .. " + B", 			hl.dsp.exec_cmd(browser))
 
 hl.bind(mainMod .. " + Tab", 	hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + V", 		hl.dsp.exec_cmd(clipboard))
-hl.bind("Print", 							hl.dsp.exec_cmd(screenshoot))
+
+hl.bind("Print", 							hl.dsp.exec_cmd(screenshot))
+hl.bind(mainMod .. " + Print", 							hl.dsp.exec_cmd(screenshot_win))
+hl.bind(mainMod .. " + CTRL + Print", 							hl.dsp.exec_cmd(screenshot_out))
+
+hl.bind("ALT + Print", 							hl.dsp.exec_cmd(alt_screenshot))
+hl.bind(mainMod .. " + ALT + Print", 							hl.dsp.exec_cmd(alt_screenshot_win))
+hl.bind(mainMod .. " + ALT + CTRL + Print", 							hl.dsp.exec_cmd(alt_screenshot_out))
 
 hl.bind(mainMod .. " + Q", 			hl.dsp.window.close())
 hl.bind(mainMod .. " + ALT + Q", 	hl.dsp.exit())

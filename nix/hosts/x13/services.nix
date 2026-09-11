@@ -26,6 +26,9 @@
     };
   };
 
+	# tunderbolt
+	services.hardware.bolt.enable = true;
+
 	# Virtual Box
 	virtualisation.virtualbox.host.enable = true;
 	users.extraGroups.vboxusers.members = [ "${username}" ];
