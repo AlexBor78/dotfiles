@@ -11,6 +11,7 @@
 		awww
 		grim
 		slurp
+		hyprshot
 		kitty
 		# hyprshot # unused for now
 		hyprland

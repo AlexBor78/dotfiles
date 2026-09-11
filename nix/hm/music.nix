@@ -23,6 +23,8 @@
 			calf # almost half usefull
 			noise-repellent # denoise
 			openutau
+			#sfizz
+			sfizz-ui
 
 #			ardour
 #			x42-plugins
@@ -67,6 +69,7 @@
 	  ".vst3/Surge XT.vst3".source = "${pkgs.surge-xt}/lib/vst3/Surge XT.vst3";
 	  ".vst3/Surge XT Effects.vst3".source = "${pkgs.surge-xt}/lib/vst3/Surge XT Effects.vst3";
 	  ".vst3/DecentSampler.vst3".source = "${pkgs.decent-sampler}/lib/vst3/DecentSampler.vst3";
+	  ".vst3/sfizz.vst3".source = "${pkgs.sfizz-ui}/lib/vst3/sfizz.vst3";
 	  ".vst3/lsp-plugins.vst3".source = "${pkgs.lsp-plugins}/lib/vst3/lsp-plugins.vst3";
 	  ".vst3/DragonflyEarlyReflections.vst3".source = "${pkgs.dragonfly-reverb}/lib/vst3/DragonflyEarlyReflections.vst3";
 	  ".vst3/DragonflyHallReverb.vst3".source = "${pkgs.dragonfly-reverb}/lib/vst3/DragonflyHallReverb.vst3";
@@ -79,6 +82,7 @@
 		".lv2/Airwindows.lv2".source = "${pkgs.airwindows-lv2}/lib/lv2/Airwindows.lv2";
 		".lv2/nrepellent.lv2".source = "${pkgs.noise-repellent}/lib/lv2/nrepellent.lv2";
 		".lv2/x42-plugins.lv2".source = "${pkgs.x42-plugins}/lib/lv2";
+	  ".lv2/sfizz.lv2".source = "${pkgs.sfizz-ui}/lib/lv2/sfizz.lv2";
 		#"".source = "${}/lib/";
 	};
 
