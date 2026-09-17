@@ -1,5 +1,5 @@
 # Rice update plan
-1. [ ] Migration to lua
+1. [X] Migration to lua
   1. [X] just migrate each file to lua
   2. [~] add logic (e.g dynamic monitors setup)
   3. [ ] refactor :3
