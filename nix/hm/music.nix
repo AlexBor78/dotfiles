@@ -36,34 +36,34 @@
 #			just-a-sample # overlay
 	];
 
-#programs.reaper = {
-#  enable = true;
-#  
-#	theme = {
-#    active = "Reapertips Theme";
-#    packages = [
-#      reaper-flake.packages.${pkgs.system}.reapertips-theme
-#    ];
-#  };
-#
-#	ini.sections = {
-#		reaper = {
-#			projectpath = "/data/hobbies/music/projects/reaper";
-#			projectcreatesubdir = "1";
-#		};
-#	};
-#
-#  extensions.reapack = {
-#    enable = true;
-#    repositories = [
-#      { name = "ReaTeam Themes"; url = "https://github.com/ReaTeam/Themes/raw/master/index.xml"; }
-#    ];
-#    packages = [
-#    ];
-#  };
-#
-#  #experimental.swell-wayland.enable = true;
-#};
+programs.reaper = {
+  enable = true;
+  
+	theme = {
+    active = "Reapertips Theme";
+    packages = [
+      reaper-flake.packages.${pkgs.system}.reapertips-theme
+    ];
+  };
+
+	ini.sections = {
+		reaper = {
+			projectpath = "/data/hobbies/music/projects/reaper";
+			projectcreatesubdir = "1";
+		};
+	};
+
+  extensions.reapack = {
+    enable = true;
+    repositories = [
+      { name = "ReaTeam Themes"; url = "https://github.com/ReaTeam/Themes/raw/master/index.xml"; }
+    ];
+    packages = [
+    ];
+	};
+
+  #experimental.swell-wayland.enable = true;
+};
 
 
 	# setting vst3 links up for reaper
