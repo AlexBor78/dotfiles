@@ -6,7 +6,7 @@
 		./disks.nix
 		(builtins.fetchTarball {
 				url = "https://github.com/MrShitFox/happ-nixos/archive/main.tar.gz";
-			sha256 = "1la3yprlw4k5d4y49hfwlvr51gyncysy2hx2yyzswnjm6nnxz3wn";
+			sha256 = "06y6l0lkv75dw0ln1mgsq3blvjjx5vmdm0mqb5kgpl91irnjmdhf";
 		} + "/happ-module.nix")
 		./services.nix
 		./user.nix
