@@ -110,6 +110,7 @@
 				enable = true;
 				servers = {
 			    nil_ls.enable = true;
+					lua_ls.enable = true;
 			    clangd.enable = true;
 					cmake.enable = true;
 			    bashls.enable = true;

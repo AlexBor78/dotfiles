@@ -22,6 +22,11 @@
 #		dconf
 	];
 
+	# hypr stubs for lua
+	home.file.".local/share/hypr/stubs" = {
+		source = "${pkgs.hyprland}/share/hypr/stubs";
+	};
+
   # hypr config
   home.file.".config/hypr" = {
     source = config.lib.file.mkOutOfStoreSymlink "${dotsroot}/hypr"; 
