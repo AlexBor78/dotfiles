@@ -9,6 +9,9 @@
 
 	programs.ssh.startAgent = true;
 
+	# KDE Connect
+	programs.kdeconnect.enable = true;
+
 	# musnix
 #  musnix.enable = true;
 
