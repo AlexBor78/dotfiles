@@ -78,7 +78,7 @@ description = "my main desktop nixos config";
           programs.anime-game-launcher.enable = true;
         }
 				
-#				{ nixpkgs.overlays = [ (import ./nix/overlays) ]; }
+				{ nixpkgs.overlays = [ (import ./nix/overlays) ]; }
 
 				home-manager.nixosModules.home-manager {
 					home-manager.useGlobalPkgs = true;
