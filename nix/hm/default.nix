@@ -1,6 +1,6 @@
 # /nix/home/default.nix
 
-{ config, lib, pkgs, username, dotsroot, nixvim, tokyonight, zen-browser, reaper-flake, ... } : {
+{ config, lib, pkgs, username, dotsroot, nixvim, tokyonight, zen-browser, reaper-flake, caelestia, ... } : {
 	
 	# enable home-managegr
   programs.home-manager.enable = true;
@@ -13,6 +13,8 @@
 
 	imports = [
 		tokyonight.homeManagerModules.default
+		caelestia.homeManagerModules.default
+
 		./pkgs.nix
 		./ecosystem.nix
 		./music.nix

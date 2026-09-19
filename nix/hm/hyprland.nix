@@ -3,14 +3,13 @@
 # todo: rewrite hyprland config on lua
 
 { config, pkgs, dotsroot, rofi-theme, ... } : {
-
 	home.packages = with pkgs; [
 		quickshell
 		rofi
-		mako
-		awww
-		grim
-		slurp
+#		mako
+#		awww
+#		grim
+#		slurp
 		hyprshot
 		kitty
 		# hyprshot # unused for now
@@ -35,12 +34,20 @@
     force = true;
   };
 
-  # quickshell
-  home.file.".config/quickshell" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${dotsroot}/quickshell"; 
-    recursive = true;
-    force = true;
-  };
+	# caelestia shell
+	programs.caelestia = {
+		enable = true;
+		cli.enable = true;
+		systemd.enable = true;
+	};
+
+# todo: done my shell (not even in repo :3)
+#  # quickshell
+#  home.file.".config/quickshell" = {
+#    source = config.lib.file.mkOutOfStoreSymlink "${dotsroot}/quickshell"; 
+#    recursive = true;
+#    force = true;
+#  };
 	
   # cursor
   home.pointerCursor = {
@@ -59,7 +66,7 @@
 	};
 
 	# wallpaper
-	home.file.".config/wallpaper.png".source = "${dotsroot}/assets/wallpaper.png";
+	#home.file.".config/wallpaper.png".source = "${dotsroot}/assets/wallpaper.png";
 
 	# dark theme
 	gtk = {
@@ -80,7 +87,7 @@
 		};
 	};
 
-dconf.settings = {
+	dconf.settings = {
   "org/gnome/desktop/interface" = {
     color-scheme = "prefer-dark";
   };

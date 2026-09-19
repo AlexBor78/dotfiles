@@ -29,6 +29,11 @@ description = "my main desktop nixos config";
 			  url = "github:AlexBor78/Tokyonight-rofi-theme";
 			  flake = false;
 			};
+			caelestia = {
+				url = "github:caelestia-dots/shell";
+				inputs.nixpkgs.follows = "nixpkgs";
+			};
+
 
 			# music
 #			musnix.url = "github:musnix/musnix";
@@ -53,7 +58,7 @@ description = "my main desktop nixos config";
 			};
     };
 	# todo: try "@ inputs" shit
-  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, nix-flatpak, liquidsfz, ... }: 
+  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, nix-flatpak, liquidsfz, caelestia, ... }: 
   let
     username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
@@ -61,7 +66,7 @@ description = "my main desktop nixos config";
     mkSystem = hostname: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { 
-				inherit self hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl kumir nix-flatpak liquidsfz;
+				inherit self hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl kumir nix-flatpak liquidsfz caelestia;
 		    myLib = import ./nix/lib { inherit (nixpkgs) lib; };
 #				theme = import ./modules/theme.nix; # unused :)
 			};
@@ -85,7 +90,7 @@ description = "my main desktop nixos config";
 					home-manager.useUserPackages = true;
 					home-manager.users.${username} = import ./nix/hm;
 					home-manager.extraSpecialArgs = { 
-						inherit self hostname username libroot dotsroot nixvim tokyonight rofi-theme zen-browser reaper-flake liquidsfz;
+						inherit self hostname username libroot dotsroot nixvim tokyonight rofi-theme zen-browser reaper-flake liquidsfz caelestia;
 					};
 				}
 			];
