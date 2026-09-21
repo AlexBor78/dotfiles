@@ -7,8 +7,7 @@ local browser			= "zen"
 
 local menu = "caelestia shell drawers toggle launcher"
 local clipboard = "cliphist list | rofi -dmenu -p \"Clipboard:\" | cliphist decode | wl-copy"
--- local screenshoot =  "grim -g \"$(slurp & sleep 0.2 && hyprctl --batch 'keyword animations:enabled 0' > /dev/null)\" - | wl-copy; hyprctl --batch 'keyword animations:enabled 1'"
---
+
 local screenshot = "hyprshot -z -m region"
 local screenshot_win = "hyprshot -z -m active -m window"
 local screenshot_out = "hyprshot -z -m active -m output"

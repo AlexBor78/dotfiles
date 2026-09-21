@@ -6,18 +6,18 @@
 	home.packages = with pkgs; [
 		quickshell
 		rofi
-#		mako
-#		awww
-#		grim
-#		slurp
 		hyprshot
 		kitty
-		# hyprshot # unused for now
+
 		hyprland
 		xwayland
-    brightnessctl # need user in gruope "video" 
+
 		wl-clipboard
+		cliphist
+		fuzzel
 		playerctl
+    brightnessctl
+
 		bibata-cursors
 		gnome-themes-extra
 	];
