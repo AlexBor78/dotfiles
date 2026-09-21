@@ -37,18 +37,16 @@
 	users.extraGroups.vboxusers.members = [ "${username}" ];
 	virtualisation.virtualbox.host.enableExtensionPack = true;
 
-#	# xray vpn
-#	services.xray = {
-#    enable = true;
-#    settingsFile = "/etc/xray/config.json";
-#  };
-
 	services.happ.enable = true;
 
-	# todo: check if right
-  services.power-profiles-daemon.enable = false;
+	
+  services.power-profiles-daemon.enable = true;
+	systemd.tmpfiles.rules = [
+		"w /sys/class/power_supply/BAT0/charge_control_end_threshold - - - - 80"
+	];
+
 	services.tlp = {
-    enable = true;
+    enable = false;
     settings = {
       CPU_SCALING_GOVERNOR_ON_AC = "powersave";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
