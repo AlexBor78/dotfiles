@@ -22,6 +22,16 @@
 		gnome-themes-extra
 	];
 
+	systemd.user.targets.hyprland-session = {
+		Unit = {
+			Description = "Hyprland compositor session";
+			Documentation = [ "man:systemd.special(7)" ];
+			BindsTo = [ "graphical-session.target" ];
+			Wants = [ "graphical-session-pre.target" ];
+			After = [ "graphical-session-pre.target" ];
+		};
+	};
+
 	# hypr stubs for lua
 	home.file.".local/share/hypr/stubs" = {
 		source = "${pkgs.hyprland}/share/hypr/stubs";

@@ -22,10 +22,12 @@ end
 
 -- launch on Hyprland start
 hl.on("hyprland.start", function()
+	hl.exec_cmd("systemctl --user start hyprland-session.target")
 	hl.exec_cmd("wl-paste --watch cliphist store &")
-	hl.exec_cmd("mako")
-	hl.exec_cmd("awww-daemon ")
-	hl.exec_cmd("awww img ~/dotfiles/assets/wallpaper.png --transition-type bottom") -- todo: launch for every monitor
+	-- hl.exec_cmd("caelestia-shell -d")
+	-- hl.exec_cmd("mako")
+	-- hl.exec_cmd("awww-daemon ")
+	-- hl.exec_cmd("awww img ~/dotfiles/assets/wallpaper.png --transition-type bottom") -- todo: launch for every monitor
 end)
 
 -- inputs
