@@ -5,7 +5,7 @@ local browser			= "zen"
 -- local vim_arrows	= false;
 -- local notepad = "" 
 
-local menu = "rofi -show drun -prompt \"Search: \""
+local menu = "caelestia shell drawers toggle launcher"
 local clipboard = "cliphist list | rofi -dmenu -p \"Clipboard:\" | cliphist decode | wl-copy"
 -- local screenshoot =  "grim -g \"$(slurp & sleep 0.2 && hyprctl --batch 'keyword animations:enabled 0' > /dev/null)\" - | wl-copy; hyprctl --batch 'keyword animations:enabled 1'"
 --
