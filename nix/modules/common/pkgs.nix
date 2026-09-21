@@ -9,6 +9,8 @@ nixpkgs.config.permittedInsecurePackages = [ "electron-40.10.5" ];
 		tree jq
 		zip unzip
 		file
+		tmux
+		busybox
 		vim
 
 		# hardware stuff utils
