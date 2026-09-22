@@ -1,7 +1,8 @@
+# /nix/hm/ecosystem.nix
 { ... }:
 {
-
 	# stream audio phone -> laptop via BT
+	services.mpris-proxy.enable = true;
   xdg.configFile."wireplumber/wireplumber.conf.d/51-phone-audio.conf".text = ''
     monitor.bluez.properties = {
       bluez5.roles = [ a2dp_sink a2dp_source hsp_hs hsp_ag hfp_hf hfp_ag ]
@@ -23,6 +24,4 @@
 
 	# KDE Connect
 	services.kdeconnect.enable = true;
-
-
 }

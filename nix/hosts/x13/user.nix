@@ -1,6 +1,6 @@
 # /nix/modules/common/user.nix
-
-{ config, lib, pkgs, username, ... } : {
+{ config, lib, pkgs, username, ... }:
+{
 	programs.zsh.enable = true;
   users.users.${username} = {
     isNormalUser = true;

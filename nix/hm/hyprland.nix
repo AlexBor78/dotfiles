@@ -1,27 +1,29 @@
-# /nix/home/hyprland.nix
+# /nix/hm/hyprland.nix
+{ config, pkgs, dotsroot, rofi-theme, caelestia, tokyonight, ... }:
+{
+	imports = [
+		tokyonight.homeManagerModules.default
+		caelestia.homeManagerModules.default
+	];
 
-# todo: rewrite hyprland config on lua
-
-{ config, pkgs, dotsroot, rofi-theme, ... } : {
 	home.packages = with pkgs; [
-		quickshell
 		rofi
-		hyprshot
 		kitty
 
 		hyprland
 		xwayland
 
-		wl-clipboard
 		cliphist
-		fuzzel
+		hyprshot
 		playerctl
+		wl-clipboard
     brightnessctl
 
 		bibata-cursors
 		gnome-themes-extra
 	];
 
+	# proper graphical-session start
 	systemd.user.targets.hyprland-session = {
 		Unit = {
 			Description = "Hyprland compositor session";
@@ -51,14 +53,6 @@
 		systemd.enable = true;
 	};
 
-# todo: done my shell (not even in repo :3)
-#  # quickshell
-#  home.file.".config/quickshell" = {
-#    source = config.lib.file.mkOutOfStoreSymlink "${dotsroot}/quickshell"; 
-#    recursive = true;
-#    force = true;
-#  };
-	
   # cursor
   home.pointerCursor = {
     name = "Bibata-Modern-Classic";
@@ -74,9 +68,6 @@
 	  recursive = true;
 	  force = true;
 	};
-
-	# wallpaper
-	#home.file.".config/wallpaper.png".source = "${dotsroot}/assets/wallpaper.png";
 
 	# dark theme
 	gtk = {
@@ -98,8 +89,8 @@
 	};
 
 	dconf.settings = {
-  "org/gnome/desktop/interface" = {
-    color-scheme = "prefer-dark";
-  };
-};
+		"org/gnome/desktop/interface" = {
+			color-scheme = "prefer-dark";
+		};
+	};
 }

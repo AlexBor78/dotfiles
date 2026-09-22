@@ -1,5 +1,6 @@
-{ lib, pkgs, username, musnix, ... } : {
-
+# /nix/hosts/x13/services.nix
+{ lib, pkgs, username, musnix, ... }:
+{
 	# fingerprint
 	services.fprintd.enable = true;
 	security.pam.services.sudo.fprintAuth = true;

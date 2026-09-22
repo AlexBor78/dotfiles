@@ -1,6 +1,6 @@
 # /nix/hm/pkgs.nix
-
-{ pkgs, zen-browser, ... }: {
+{ pkgs, zen-browser, ... }:
+{
 	home.packages = with pkgs; [
 			# cli tools
 			#freerdp

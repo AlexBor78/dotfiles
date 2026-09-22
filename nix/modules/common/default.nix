@@ -1,6 +1,6 @@
 # /nix/modules/common/default.nix
-{ config, lib, pkgs, username, ... } : {
-
+{ config, lib, pkgs, username, ... }:
+{
 	# Don't change
   system.stateVersion = "25.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

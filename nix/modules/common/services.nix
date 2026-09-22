@@ -1,7 +1,6 @@
 # /nix/modules/common/services.nix
-
-{ pkgs, username, ... } : {
-	
+{ pkgs, username, ... }:
+{
   # Enable the OpenSSH daemon.
   #services.openssh.enable = true;
 

@@ -1,7 +1,6 @@
 # /nix/hosts/x13/disks.nix
-
-{ myLib, ... }: {
-  
+{ myLib, ... }:
+{
   fileSystems = {
     "/" =     myLib.disks.mkExt4BL	"nixos_root";
     "/boot" = myLib.disks.mkFatBL   "boot";

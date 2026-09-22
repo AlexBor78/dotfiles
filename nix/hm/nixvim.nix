@@ -1,7 +1,7 @@
-# /nix/home/nixvim.nix
+# /nix/hm/nixvim.nix
 # todo: refactor half ai slop
-{ nixvim, pkgs, ... }: {
-
+{ nixvim, pkgs, ... }:
+{
   imports = [
     nixvim.homeModules.nixvim
   ];
@@ -29,14 +29,6 @@
 			};
     };
 
-#		spellcheck = {
-#			enable = true;
-#			settings = {
-#				lang = "en";
-#				use_nerd_font_symbols = true;
-#			};
-#		};
-	
 		colorschemes.tokyonight = {
 	    enable = true;
 	    settings.style = "night";
@@ -66,15 +58,7 @@
 			gitsigns.enable = true;
 			lazygit.enable = true;
 
-#		  spellsitter = {
-#			    enable = true;
-#			    settings = {
-#			      enable = true;
-#			      langs = [ "en" ];
-#			    };
-#			  };
-
-
+			# todo: clean up
 		  # === TOGGLETERM: Терминал внутри Neovim ===
 		  toggleterm = {
 		    enable = true;
@@ -99,7 +83,6 @@
 		    };
 		  };
 
-
 			luasnip.enable = true;
 			cmp = {
 				enable = true;
@@ -122,8 +105,6 @@
 					jsonls.enable = true;
 			  };
 			};
-
-
 		};
   };
 }

@@ -1,12 +1,6 @@
-# /nix/home/shell.nix
-
-{ config, pkgs, lib, theme, hostname, dotsroot, ... } : {
-
-	programs.bat = {
-		enable = true;
-		tokyonight.enable = true;
-	};
-
+# /nix/hm/shell.nix
+{ pkgs, lib, hostname, dotsroot, ... }:
+{
 	home.packages = with pkgs; [
 			gh
 			lsd
@@ -16,6 +10,11 @@
 			starship
 			fastfetch
 	];
+
+	programs.bat = {
+		enable = true;
+		tokyonight.enable = true;
+	};
 
 	# todo: btop theme doesn't work
 	programs.btop.settings.color_theme = "tokyo-night";
@@ -145,6 +144,7 @@
 				};
 			};
 
+	# todo: WTF IS THAT SHIT ???
 			modules = let mkModules = list: map (item:
 					if builtins.isString item then {
 						type = item;

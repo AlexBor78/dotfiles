@@ -1,7 +1,6 @@
 # /nix/modules/common/boot.nix
-
-{ lib, ...} : {
-	
+{ lib, ...}:
+{
   # Bootloader (grub)
   boot.loader = {
     efi = {

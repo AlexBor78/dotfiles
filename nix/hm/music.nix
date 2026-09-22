@@ -1,5 +1,6 @@
-{ pkgs, reaper-flake, liquidsfz, ... }: {
-
+# /nix/hm/music.nix
+{ pkgs, reaper-flake, liquidsfz, ... }:
+{
 	imports = [
 		reaper-flake.homeModules.reaper
 	];
@@ -36,37 +37,34 @@
 #			just-a-sample # overlay
 	];
 
-programs.reaper = {
-  enable = true;
-  
-	theme = {
-    active = "Reapertips Theme";
-    packages = [
-      reaper-flake.packages.${pkgs.system}.reapertips-theme
-    ];
-  };
+	programs.reaper = {
+		enable = true;
+		
+		theme = {
+			active = "Reapertips Theme"; # doesn't work; todo: fix
+			packages = [
+				reaper-flake.packages.${pkgs.system}.reapertips-theme
+			];
+		};
 
-	ini.sections = {
-		reaper = {
-			projectpath = "/data/hobbies/music/projects/reaper";
-			projectcreatesubdir = "1";
+		ini.sections = {
+			reaper = {
+				projectpath = "/data/hobbies/music/projects/reaper";
+				projectcreatesubdir = "1";
+			};
+		};
+
+		extensions.reapack = {
+			enable = true;
+			repositories = [
+				{ name = "ReaTeam Themes"; url = "https://github.com/ReaTeam/Themes/raw/master/index.xml"; }
+			];
+			packages = [
+			];
 		};
 	};
 
-  extensions.reapack = {
-    enable = true;
-    repositories = [
-      { name = "ReaTeam Themes"; url = "https://github.com/ReaTeam/Themes/raw/master/index.xml"; }
-    ];
-    packages = [
-    ];
-	};
-
-  #experimental.swell-wayland.enable = true;
-};
-
-
-	# setting vst3 links up for reaper
+	# plugins symlinks 
 	home.file = {
 	  ".vst3/vital.vst3".source = "${pkgs.vital}/lib/vst3/vital.vst3";
 	  ".vst3/Surge XT.vst3".source = "${pkgs.surge-xt}/lib/vst3/Surge XT.vst3";

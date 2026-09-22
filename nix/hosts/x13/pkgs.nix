@@ -1,8 +1,6 @@
 # /nix/modules/common/user.nix
-
-
-{ config, lib, pkgs, ... } : {
-
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
 		docker
 #		qemu_kvm virt-manager virt-viewer adwaita-icon-theme OVMF

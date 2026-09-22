@@ -1,7 +1,6 @@
-# /nix/home/default.nix
-
-{ config, lib, pkgs, username, dotsroot, nixvim, tokyonight, zen-browser, reaper-flake, caelestia, ... } : {
-	
+# /nix/hm/default.nix
+{ lib, username, ... }:
+{
 	# enable home-managegr
   programs.home-manager.enable = true;
 
@@ -12,9 +11,6 @@
   home.homeDirectory = lib.mkForce "/home/${username}";
 
 	imports = [
-		tokyonight.homeManagerModules.default
-		caelestia.homeManagerModules.default
-
 		./pkgs.nix
 		./ecosystem.nix
 		./music.nix
@@ -23,7 +19,4 @@
 		./nixvim.nix
 		./hyprland.nix
 	];
-
-	# for right bt audio
-	services.mpris-proxy.enable = true;
 }
