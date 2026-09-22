@@ -1,11 +1,10 @@
 { lib, pkgs, username, musnix, ... } : {
 
-	# todo: make itnwork on T480
 	# fingerprint
-#	services.fprintd.enable = true;
-#	security.pam.services.sudo.fprintAuth = true;
-#  security.pam.services.login.fprintAuth = true;
-#	security.pam.services.sshd.fprintAuth = true;
+	services.fprintd.enable = true;
+	security.pam.services.sudo.fprintAuth = true;
+  security.pam.services.login.fprintAuth = true;
+	security.pam.services.sshd.fprintAuth = true;
 
 	programs.ssh.startAgent = true;
 
@@ -38,7 +37,6 @@
 	virtualisation.virtualbox.host.enableExtensionPack = true;
 
 	services.happ.enable = true;
-
 	
   services.power-profiles-daemon.enable = true;
 	systemd.tmpfiles.rules = [
