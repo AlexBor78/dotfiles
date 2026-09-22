@@ -1,3 +1,6 @@
 [submodule "rofi/Tokyonight-rofi-theme"]
 	path = rofi/Tokyonight-rofi-theme
 	url = https://github.com/AlexBor78/Tokyonight-rofi-theme
+[submodule "nix/flakes/liquidsfz-flake"]
+	path = nix/flakes/liquidsfz-flake
+	url = https://github.com/AlexBor78/liquidsfz-flake
