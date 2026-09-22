@@ -1,2 +1,0 @@
-hyprctl kill waybar
-waybar

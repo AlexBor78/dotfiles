@@ -1,1 +1,0 @@
-hyprctl activewindow >> ~/activewindowinfo.txt
