@@ -39,7 +39,7 @@ description = "my main desktop nixos config";
 #			musnix.url = "github:musnix/musnix";
 			reaper-flake.url = "github:9Prestidigitator/reaper-flake";
 			liquidsfz = {
-				url = "path:./nix/flakes/liquidsfz-flake";
+				url = "github:AlexBor78/liquidsfz-flake";
 				inputs.nixpkgs.follows = "nixpkgs";
 			};
 

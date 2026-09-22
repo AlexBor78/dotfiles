@@ -212,14 +212,18 @@
         ]
       },
       "locked": {
-        "path": "./nix/flakes/liquidsfz-flake",
-        "type": "path"
+        "lastModified": 1790072753,
+        "narHash": "sha256-6CQPuIQNb6x+l3fRZnQlr6N+s4uxN4R4l7ZdgL5nnQI=",
+        "owner": "AlexBor78",
+        "repo": "liquidsfz-flake",
+        "rev": "662c9bca5fb082bbd89ef4cc1dd2842c25c59955",
+        "type": "github"
       },
       "original": {
-        "path": "./nix/flakes/liquidsfz-flake",
-        "type": "path"
-      },
-      "parent": []
+        "owner": "AlexBor78",
+        "repo": "liquidsfz-flake",
+        "type": "github"
+      }
     },
     "m3shapes": {
       "inputs": {
