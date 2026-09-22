@@ -1,5 +1,8 @@
 # Plans & state
 
+## Refacor
+- [ ] list all todos from configs here
+
 ## Problems / warnings to fix
 - [ ] fix happ startup via caelestia launcher (something with env QT_PLATFORM, etc)
 - [ ] sometimes monitors don't configure right from 1st time
