@@ -1,3 +1,5 @@
+-- todo: decide if move all vars to one config.lua like file
+-- var
 local terminal 		= "kitty"
 local tg					= "AyuGram"
 local files				= "nautilus"
@@ -16,11 +18,13 @@ local alt_screenshot = "hyprshot -z -m region"
 local alt_screenshot_win = "hyprshot -z -m active -m window"
 local alt_screenshot_out = "hyprshot -z -m active -m output"
 
+local mainMod = "SUPER"
+
+-- setup
+
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 hl.gesture({ fingers = 3, direction = "up", 				action = "special", workspace_name = "z" })
 hl.gesture({ fingers = 3, direction = "down", 			action = "special", workspace_name = "tg" })
-
-local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + T", 			hl.dsp.exec_cmd(tg))

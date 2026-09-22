@@ -1,4 +1,5 @@
 -- env
+-- todo: move to nix part
 local env = {
 	XCURSOR_THEME = "Bibata-Modern-Classic"
 , XCURSOR_SIZE = "24"
@@ -24,12 +25,9 @@ end
 hl.on("hyprland.start", function()
 	hl.exec_cmd("systemctl --user start hyprland-session.target")
 	hl.exec_cmd("wl-paste --watch cliphist store &")
-	-- hl.exec_cmd("caelestia-shell -d")
-	-- hl.exec_cmd("mako")
-	-- hl.exec_cmd("awww-daemon ")
-	-- hl.exec_cmd("awww img ~/dotfiles/assets/wallpaper.png --transition-type bottom") -- todo: launch for every monitor
 end)
 
+-- todo: move to keybinds for convenience 
 -- inputs
 hl.config({
 	input = {

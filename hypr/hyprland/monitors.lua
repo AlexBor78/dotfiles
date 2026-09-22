@@ -1,3 +1,4 @@
+-- todo: sometimes doesn't work right
 function configure_monitors()
 	hl.notification.create({
 		text = "configuring monitor",

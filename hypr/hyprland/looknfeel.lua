@@ -90,6 +90,6 @@ hl.animation({ leaf = "workspacesOut", 				enabled = true, speed = 5, bezier = "
 hl.animation({ leaf = "specialWorkspaceIn", 	enabled = true, speed = 5, bezier = "workspaceSwap", style = "slidevert" })
 hl.animation({ leaf = "specialWorkspaceOut", 	enabled = true, speed = 5, bezier = "workspaceSwap", style = "slidefadevert" })
 
--- others
+-- todo: others
 -- hl.animation({ leaf = "zoomFactor", enabled = true, speed = 5, bezier = "ease", style = "" })
 -- hl.animation({ leaf = "monitorAdded", enabled = true, speed = 5, bezier = "ease", style = "" })
