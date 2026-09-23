@@ -11,6 +11,7 @@
 		tmux
 		busybox
 		vim
+		pv
 
 		# hardware stuff utils
 		usbutils pciutils lm_sensors smartmontools
