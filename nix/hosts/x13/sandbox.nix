@@ -2,7 +2,7 @@
 { username, ... }:
 {
 	# docker
-	#virtualisation.docker.enable = true;
+	virtualisation.docker.enable = true;
 
 	# qemu
 	#virtualisation.libvirtd.enable = true;

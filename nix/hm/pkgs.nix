@@ -5,6 +5,7 @@
 			# cli tools
 			#freerdp
 			wireguard-tools
+			distrobox
 			# nix-ld
 
 			# video editing
@@ -45,9 +46,9 @@
 
 			# minecraft
 			#jdk17 
-			jdk25
-			pandora-launcher
-			#modrinth-app
+#			jdk25
+#			pandora-launcher
+#			modrinth-app
 #			modrinth-app-unwrapped
 #			prismlauncher
 			
