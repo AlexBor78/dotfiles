@@ -1,24 +1,10 @@
 # /nix/hosts/x13/services.nix
 { lib, pkgs, username, musnix, ... }:
 {
-	# fingerprint
-	services.fprintd.enable = true;
-	security.pam.services.sudo.fprintAuth = true;
-  security.pam.services.login.fprintAuth = true;
-	security.pam.services.sshd.fprintAuth = true;
-
-	programs.ssh.startAgent = true;
-
-	# KDE Connect
-	programs.kdeconnect.enable = true;
-
-	# musnix
-#  musnix.enable = true;
-
-	# passwords synth
-  services.syncthing.enable = true;
-
-#	services.flatpak.enable = true;
+	imports = [
+		./network.nix
+		./sandbox.nix
+	];
 
 	# display manager
   services.greetd = {
@@ -29,16 +15,23 @@
     };
   };
 
+	# fingerprint
+	services.fprintd.enable = true;
+	security.pam.services.sudo.fprintAuth = true;
+  security.pam.services.login.fprintAuth = true;
+	security.pam.services.sshd.fprintAuth = true;
+
+	programs.ssh.startAgent = true;
+
+	# passwords synth
+  services.syncthing.enable = true;
+
+#	services.flatpak.enable = true;
+
 	# tunderbolt
 	services.hardware.bolt.enable = true;
 
-	# Virtual Box
-	virtualisation.virtualbox.host.enable = true;
-	users.extraGroups.vboxusers.members = [ "${username}" ];
-	virtualisation.virtualbox.host.enableExtensionPack = true;
 
-	services.happ.enable = true;
-	
   services.power-profiles-daemon.enable = true;
 	systemd.tmpfiles.rules = [
 		"w /sys/class/power_supply/BAT0/charge_control_end_threshold - - - - 80"
@@ -64,31 +57,4 @@
     };
   };
 
-	# docker
-	#virtualisation.docker.enable = true;
-	# qemu
-	#virtualisation.libvirtd.enable = true;
-
-	# labs vpn
-	# tmp turn off, bcs colides with local ips
-#	services.openvpn.servers = {
-#		labsVPN = { config = '' config /etc/openvpn/ch_vpn_linux.ovpn ''; };
-#	};
-	
-	# deploy vpn
-	networking.wireguard.enable = true;
-  networking.wireguard.interfaces.wg0 = {
-    ips = [ "10.0.0.3/24" ];
-    privateKeyFile = "/var/lib/wireguard/privatekey";
-    
-    peers = [
-      {
-        publicKey = "wJ0ynClXDC8OVsGpy/cgCpMmJAH8QDHrUK0PNoMJSn0=";
-        endpoint = "188.68.223.213:51820";
-        
-        allowedIPs = [ "10.0.0.0/24" ];
-        persistentKeepalive = 25;
-      }
-    ];
-  };
 }
