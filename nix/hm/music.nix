@@ -79,7 +79,8 @@
 		".vst3/CHOWTapeModel.vst3".source = "${pkgs.chow-tape-model}/lib/vst3/CHOWTapeModel.vst3";
 
 		".lv2/calf.lv2".source = "${pkgs.calf}/lib/lv2/calf.lv2";
-		".lv2/liquidsfz.lv2".source = "${liquidsfz}/result/lib/lv2/liquidsfz.lv2";
+		#".lv2/liquidsfz.lv2".source = "${liquidsfz}/result/lib/lv2/liquidsfz.lv2";
+		".lv2/liquidsfz.lv2".source = "${liquidsfz.packages.${pkgs.system}.default}/lib/lv2/liquidsfz.lv2";
 		".lv2/carla.lv2".source = "${pkgs.carla}/lib/lv2/carla.lv2";
 		".lv2/Airwindows.lv2".source = "${pkgs.airwindows-lv2}/lib/lv2/Airwindows.lv2";
 		".lv2/nrepellent.lv2".source = "${pkgs.noise-repellent}/lib/lv2/nrepellent.lv2";
