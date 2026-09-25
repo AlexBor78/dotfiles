@@ -6,7 +6,8 @@
 ## Problems / warnings to fix
 - [ ] fix happ startup via caelestia launcher (something with env QT_PLATFORM, etc)
 - [ ] sometimes monitors don't configure right from 1st time
-- [ ] native reaper no files popups menus :(
+- [X] native reaper no files popups menus :(
+  Fixed by itself :3
 
 ## Rice
 - [ ] update hyprland animations
@@ -25,7 +26,8 @@
  - [ ] fully configure Zen via hm (extensions, spaces, essential tabs, themes, etc)
 
 - Reaper
-  - [ ] fix native build
+  - [X] fix native build
+      Fixed by itself :3
   - [ ] fully configure reaper via hm
 
 ## to explore
