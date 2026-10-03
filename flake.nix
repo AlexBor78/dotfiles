@@ -34,6 +34,11 @@ description = "my main desktop nixos config";
 				inputs.nixpkgs.follows = "nixpkgs";
 			};
 
+			# fonts
+			gwathlyn-font = {
+				url = "path:nix/flakes/gwathlyn-font";
+				inputs.nixpkgs.follows = "nixpkgs";
+			};
 
 			# music
 #			musnix.url = "github:musnix/musnix";
@@ -42,8 +47,6 @@ description = "my main desktop nixos config";
 				url = "github:AlexBor78/liquidsfz-flake";
 				inputs.nixpkgs.follows = "nixpkgs";
 			};
-
-
 
 			# genshin
 			aagl = {
@@ -58,7 +61,7 @@ description = "my main desktop nixos config";
 			};
     };
 	# todo: try "@ inputs" shit
-  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, nix-flatpak, liquidsfz, caelestia, ... }: 
+  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, nix-flatpak, liquidsfz, caelestia, gwathlyn-font, ... }: 
   let
     username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
@@ -84,6 +87,9 @@ description = "my main desktop nixos config";
         }
 				
 				{ nixpkgs.overlays = [ (import ./nix/overlays) ]; }
+				({ pkgs, ... }: {
+					fonts.packages = [ gwathlyn-font.packages.${pkgs.system}.default ];
+				})
 
 				home-manager.nixosModules.home-manager {
 					home-manager.useGlobalPkgs = true;
