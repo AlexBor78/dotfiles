@@ -29,13 +29,14 @@
 			pwvucontrol
 			nautilus
 			#thunar
-			#gimp
+			gimp
 			keepassxc
 			system-config-printer
 			element-desktop
 			motrix  # downloads manager
 			clapper # player
 			vlc  		# if clapper goes bad 
+			mpv			# photos & ligtweight player
 			
 #			# for indiv proj
 #			texlivePackages.hyphen-russian
