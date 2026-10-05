@@ -63,22 +63,23 @@
 	  nssmdns4 = true;
 	  openFirewall = true;
 	};
-
-	# xdg portals
+	
 	xdg.portal = {
-	  enable = true;
-		#wlr.enable = true;
+		enable = true;
 
-	  #config.common.default = [ "gtk" ];
-#		config.common."org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-		#config.common."org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+		wlr.enable = false;  # conflicts with hyprland portal, don't run both
 
-	  #configPackages = with pkgs; [
-	  #  #xdg-desktop-portal-wlr  # screencast, csreenshoots etc for wayland 
-	  #  xdg-desktop-portal-gtk  # file dialogs etc
-	  #];
+		config.common.default = [ "hyprland" "gtk" ];
+		# no need to route Screenshot/ScreenCast manually — hyprland backend handles them
 
-		# todo: needs for assertion, will be deleted in future :)
-		extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+		configPackages = with pkgs; [
+			xdg-desktop-portal-hyprland
+			xdg-desktop-portal-gtk
+		];
+
+		extraPortals = with pkgs; [
+			xdg-desktop-portal-hyprland
+			xdg-desktop-portal-gtk
+		];
 	};
 }

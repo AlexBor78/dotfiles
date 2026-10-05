@@ -37,6 +37,7 @@
 			clapper # player
 			vlc  		# if clapper goes bad 
 			mpv			# photos & ligtweight player
+			obs-studio
 			
 #			# for indiv proj
 #			texlivePackages.hyphen-russian
