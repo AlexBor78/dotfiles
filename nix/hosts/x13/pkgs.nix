@@ -19,24 +19,29 @@
 		];
 		packages = [
 			"fm.reaper.Reaper"
+			"com.usebottles.bottles"
 		];
 		overrides = {
-			"fm.reaper.Reaper" = {
-				Context = {
-					# "host" дает доступ ко всей ФС, но явно добавим домашние папки с плагинами
+			"com.usebottles.bottles" = {
+				Context= {
+					sockets = [ "!network" ];
 					filesystems = [ 
+						"!host" 
+						"!home" 
+						"/data/sandbox/wine/bottles"
+						"/data/hobbies/music"
+					];
+				};
+			};
+			"fm.reaper.Reaper" = {
+				Context.filesystems = [ 
 						"host" 
 						"~/.vst3" 
 						"~/.lv2"
-						# Если проекты на другом диске, добавь его путь, например:
-						# "/mnt/music"
-					];
-				};
+				];
 				Environment = {
-					# Указываем Reaper точные пути к плагинам
 					VST3_PATH = "/home/alex/.vst3";
 					LV2_PATH = "/home/alex/.lv2";
-					# На всякий случай, если Reaper ищет в других местах
 					VST_PATH = "/home/alex/.vst";
 				};
 			};
