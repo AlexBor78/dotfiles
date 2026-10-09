@@ -7,7 +7,14 @@
 		openvpn3
 		stdenv.cc.cc.lib
 		steam-run
+
+		appimage-run
   ]; 
+
+	programs.appimage = {
+		enable = true;
+		binfmt = true;
+	};
 
 	services.flatpak = {
 		enable = true;
@@ -46,7 +53,9 @@
 				};
 			};
 		};
-};
+	};
+
+
 
 #	hardware.cpu.x86.msr.settings.allow-writes = "on";
 
