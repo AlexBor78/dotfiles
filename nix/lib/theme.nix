@@ -1,5 +1,3 @@
-# /nix/modules/theme.nix
-
 {
 	tokyoNight = {
 		bg = "#1a1b26";
