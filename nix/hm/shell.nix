@@ -48,6 +48,7 @@
 	};
 
 	home.sessionVariables.SOPS_AGE_KEY_FILE = "/data/secrets/sops/age/keys.txt";
+	home.sessionVariables.EDITOR = "nvim";
 
 	# zsh - shell
 	programs.zsh = {
