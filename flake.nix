@@ -105,8 +105,9 @@ description = "my main desktop nixos config";
 		};
 
   in {
-
-    nixosConfigurations.t480 = mkSystem "t480";
-    nixosConfigurations.x13 = mkSystem "x13";
+    nixosConfigurations = {
+    	t480 = mkSystem "t480";
+    	x13 = mkSystem "x13";
+		};
   };
 }
