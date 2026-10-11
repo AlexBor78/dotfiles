@@ -3,7 +3,7 @@
 ## Refacor
 - [ ] list all todos from configs here
 - [ ] make per-host hm
-- [ ] move `lexalib` to separate repo
+- [X] move `lexalib` to separate repo
 
 ## Problems / warnings to fix
 - [ ] fix happ startup via caelestia launcher (something with env QT_PLATFORM, etc)

@@ -57,21 +57,23 @@ description = "my main desktop nixos config";
 			# study
 			kumir = {
 				url = "github:ProggerX/kumir-nix";
+			};
+
+			lexalib-nix = {
+				url = "github:AlexBor78/nix-lexalib";
         inputs.nixpkgs.follows = "nixpkgs";
 			};
     };
 	# todo: try "@ inputs" shit
-  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, nix-flatpak, liquidsfz, caelestia, gwathlyn-font, ... }: 
+  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, nix-flatpak, liquidsfz, caelestia, gwathlyn-font, lexalib-nix, ... }: 
   let
     username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
-		libroot = "${dotsroot}/nix/lib";
-			lexalib = import ./nix/lib { inherit (nixpkgs) lib; };
+		lexalib = lexalib-nix.lexalib;
     mkSystem = hostname: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { 
 				inherit self lexalib hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl kumir nix-flatpak liquidsfz caelestia;
-#				theme = import ./modules/theme.nix; # unused :)
 			};
 			modules = [
 				{ nixpkgs.config.allowUnfree = true; }
@@ -96,7 +98,7 @@ description = "my main desktop nixos config";
 					home-manager.useUserPackages = true;
 					home-manager.users.${username} = import ./nix/hm;
 					home-manager.extraSpecialArgs = { 
-						inherit self hostname username libroot dotsroot nixvim tokyonight rofi-theme zen-browser reaper-flake liquidsfz caelestia sops-nix;
+						inherit self hostname username dotsroot nixvim tokyonight rofi-theme zen-browser reaper-flake liquidsfz caelestia sops-nix;
 					};
 				}
 			];
@@ -104,7 +106,6 @@ description = "my main desktop nixos config";
 
   in {
 
-		inherit lexalib;
     nixosConfigurations.t480 = mkSystem "t480";
     nixosConfigurations.x13 = mkSystem "x13";
   };
