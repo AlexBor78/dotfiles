@@ -75,8 +75,8 @@ description = "my main desktop nixos config";
 			};
 			modules = [
 				{ nixpkgs.config.allowUnfree = true; }
+				./nix/hosts/basic
 				./nix/hosts/${hostname}
-				./nix/modules/common
 				sops-nix.nixosModules.sops
 #				musnix.nixosModules.musnix
 				nix-flatpak.nixosModules.nix-flatpak
