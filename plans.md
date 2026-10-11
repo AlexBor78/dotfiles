@@ -2,6 +2,7 @@
 
 ## Refacor
 - [ ] list all todos from configs here
+- [ ] make per-host hm
 
 ## Problems / warnings to fix
 - [ ] fix happ startup via caelestia launcher (something with env QT_PLATFORM, etc)

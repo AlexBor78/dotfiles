@@ -1,5 +1,5 @@
 # /nix/hm/shell.nix
-{ pkgs, lib, hostname, dotsroot, ... }:
+{ pkgs, lib, config, hostname, dotsroot, ... }:
 {
 	home.packages = with pkgs; [
 			gh
@@ -15,6 +15,19 @@
 		enable = true;
 		tokyonight.enable = true;
 	};
+
+	sops = {
+    defaultSopsFile = "${dotsroot}/secrets/x13/ssh.yaml";
+		age.keyFile = "/data/secrets/sops/age/keys.txt";
+    secrets.anton   = { path = "${config.home.homeDirectory}/.ssh/anton";   mode = "0600"; };
+    secrets.maria   = { path = "${config.home.homeDirectory}/.ssh/maria";   mode = "0600"; };
+    secrets.vds_ru1 = { path = "${config.home.homeDirectory}/.ssh/vds_ru1"; mode = "0600"; };
+  };
+
+
+	# todo: pull info about ip from deploy_sandbox
+	# programs.ssh = {
+	# };
 
 	# todo: btop theme doesn't work
 	programs.btop.settings.color_theme = "tokyo-night";

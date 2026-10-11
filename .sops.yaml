@@ -1,0 +1,8 @@
+# .sops.yaml
+keys:
+  - &x13 age1nvgerxmzmz64dk2rvatpjk4ddymzeh8e5mekncpy95cfwzv4e5qszeppkt
+
+creation_rules:
+  - path_regex: secrets/.*\.yaml$
+    age: [*x13]
+

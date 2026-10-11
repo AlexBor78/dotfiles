@@ -13,6 +13,9 @@
 		vim
 		pv
 
+		# sops
+		age sops
+
 		# hardware stuff utils
 		usbutils pciutils lm_sensors smartmontools
 		linux-firmware

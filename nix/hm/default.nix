@@ -1,5 +1,5 @@
 # /nix/hm/default.nix
-{ lib, username, ... }:
+{ lib, username, sops-nix, ... }:
 {
 	# enable home-managegr
   programs.home-manager.enable = true;
@@ -11,6 +11,7 @@
   home.homeDirectory = lib.mkForce "/home/${username}";
 
 	imports = [
+		sops-nix.homeManagerModules.sops
 		./pkgs.nix
 		./ecosystem.nix
 		./music.nix

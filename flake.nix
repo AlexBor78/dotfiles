@@ -96,7 +96,7 @@ description = "my main desktop nixos config";
 					home-manager.useUserPackages = true;
 					home-manager.users.${username} = import ./nix/hm;
 					home-manager.extraSpecialArgs = { 
-						inherit self hostname username libroot dotsroot nixvim tokyonight rofi-theme zen-browser reaper-flake liquidsfz caelestia;
+						inherit self hostname username libroot dotsroot nixvim tokyonight rofi-theme zen-browser reaper-flake liquidsfz caelestia sops-nix;
 					};
 				}
 			];
