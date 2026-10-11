@@ -1,6 +1,12 @@
 # /nix/hm/shell.nix
-{ pkgs, lib, config, hostname, dotsroot, ... }:
-{
+{ pkgs, lib, lexalib, config, hostname, dotsroot, ... }:
+let
+	hosts = {
+    anton   = { user = "admin"; };
+    maria   = { user = "admin"; };
+    vds-ru1 = { user = "root"; };
+  };
+in {
 	home.packages = with pkgs; [
 			gh
 			lsd
@@ -22,13 +28,28 @@
     secrets.default = { path = "${config.home.homeDirectory}/.ssh/default";	mode = "0600"; };
     secrets.anton   = { path = "${config.home.homeDirectory}/.ssh/anton";  	mode = "0600"; };
     secrets.maria   = { path = "${config.home.homeDirectory}/.ssh/maria";  	mode = "0600"; };
-    secrets.vds_ru1 = { path = "${config.home.homeDirectory}/.ssh/vds_ru1";	mode = "0600"; };
+    secrets.vds-ru1 = { path = "${config.home.homeDirectory}/.ssh/vds-ru1";	mode = "0600"; };
   };
 
 
-	# todo: pull info about ip from deploy_sandbox
-	# programs.ssh = {
-	# };
+	# some AI generated magic for ssh configuration
+	programs.ssh.enable = true;
+	programs.ssh.matchBlocks =
+		lib.mapAttrs (name: h: {
+			hostname = lexalib.infra.${name}.ip;
+			inherit (h) user;
+			identityFile = config.sops.secrets.${name}.path;
+			identitiesOnly = true;
+		}) hosts
+		// {
+			vds = {
+				hostname = "10.0.0.1";
+				user = "admin";
+				identityFile = "~/.ssh/id_ed25519_admin";
+				identitiesOnly = true;
+				serverAliveInterval = 60;
+			};
+		};
 
 	# todo: btop theme doesn't work
 	programs.btop.settings.color_theme = "tokyo-night";
