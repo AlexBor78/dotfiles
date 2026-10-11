@@ -1,15 +1,15 @@
 # /nix/hosts/x13/disks.nix
 
-{ myLib, ... }: {
+{ lexalib, ... }: {
   
   fileSystems = {
-    "/" =     myLib.disks.mkExt4BL	"nixos_root";
-    "/boot" = myLib.disks.mkFatBL   "boot";
-    "/home" = myLib.disks.mkBtrfs 	{ device = "/dev/laptop/shared_home"; comp = "zstd:3"; };
-		"/data" = myLib.disks.mkBtrfsBL { label = "data"; comp = "zstd:3"; }; # even have data
+    "/" =     lexalib.disks.mkExt4BL	"nixos_root";
+    "/boot" = lexalib.disks.mkFatBL   "boot";
+    "/home" = lexalib.disks.mkBtrfs 	{ device = "/dev/laptop/shared_home"; comp = "zstd:3"; };
+		"/data" = lexalib.disks.mkBtrfsBL { label = "data"; comp = "zstd:3"; }; # even have data
   };
 
-  swapDevices = [ (myLib.disks.mkSwapBL "swap") ] ;
+  swapDevices = [ (lexalib.disks.mkSwapBL "swap") ] ;
 
   zramSwap = {
     enable = true;

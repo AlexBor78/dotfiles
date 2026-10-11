@@ -66,11 +66,11 @@ description = "my main desktop nixos config";
     username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
 		libroot = "${dotsroot}/nix/lib";
+			lexalib = import ./nix/lib { inherit (nixpkgs) lib; };
     mkSystem = hostname: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { 
-				inherit self hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl kumir nix-flatpak liquidsfz caelestia;
-		    myLib = import ./nix/lib { inherit (nixpkgs) lib; };
+				inherit self lexalib hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl kumir nix-flatpak liquidsfz caelestia;
 #				theme = import ./modules/theme.nix; # unused :)
 			};
 			modules = [
@@ -104,6 +104,7 @@ description = "my main desktop nixos config";
 
   in {
 
+		inherit lexalib;
     nixosConfigurations.t480 = mkSystem "t480";
     nixosConfigurations.x13 = mkSystem "x13";
   };
