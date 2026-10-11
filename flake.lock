@@ -237,18 +237,18 @@
         "type": "github"
       }
     },
-    "lexalib-nix": {
+    "lexalib": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1791736690,
-        "narHash": "sha256-vSGn1o28fljOTot3FxL4wSjaXJAYtP40t5LVcwA4ASQ=",
+        "lastModified": 1791739219,
+        "narHash": "sha256-f1Ls8Q7DSaSwJ0QdbnNQrK+M0eK2JiBFJ8In45qd4TY=",
         "owner": "AlexBor78",
         "repo": "nix-lexalib",
-        "rev": "6f5e7fb3b9e95e7ac8e3785a10a35e7463c8e417",
+        "rev": "718e57d8fb76c863e482ca0a4e3510e6f831ed7c",
         "type": "github"
       },
       "original": {
@@ -477,7 +477,7 @@
         "gwathlyn-font": "gwathlyn-font",
         "home-manager": "home-manager",
         "kumir": "kumir",
-        "lexalib-nix": "lexalib-nix",
+        "lexalib": "lexalib",
         "liquidsfz": "liquidsfz",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_2",

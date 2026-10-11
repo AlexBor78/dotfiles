@@ -59,17 +59,17 @@ description = "my main desktop nixos config";
 				url = "github:ProggerX/kumir-nix";
 			};
 
-			lexalib-nix = {
+			lexalib = {
 				url = "github:AlexBor78/nix-lexalib";
         inputs.nixpkgs.follows = "nixpkgs";
 			};
     };
 	# todo: try "@ inputs" shit
-  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, nix-flatpak, liquidsfz, caelestia, gwathlyn-font, lexalib-nix, ... }: 
+  outputs = { self, nixpkgs, home-manager, zen-browser, nixvim, tokyonight, rofi-theme, sops-nix, reaper-flake, aagl, kumir, nix-flatpak, liquidsfz, caelestia, gwathlyn-font, lexalib, ... }: 
   let
     username = "alex"; # todo: change to lexa one day
     dotsroot = toString self;
-		lexalib = lexalib-nix.lexalib;
+		#lexalib = lexalib.lexalib;
     mkSystem = hostname: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { 
