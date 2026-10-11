@@ -4,7 +4,7 @@ let
 	hosts = {
     anton   = { user = "admin"; };
     maria   = { user = "admin"; };
-    vds-ru1 = { user = "root"; };
+    vds-ru1 = { user = "admin"; };
   };
 in {
 	home.packages = with pkgs; [
