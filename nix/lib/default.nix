@@ -2,5 +2,5 @@
 { lib, ... }: {
 	disks = import ./disks.nix { inherit lib; };
 	theme = import ./theme.nix;
-	ssh_key = import ./ssh-keys.nix;
+	ssh_keys = import ./ssh_keys.nix;
 }

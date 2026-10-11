@@ -19,9 +19,10 @@
 	sops = {
     defaultSopsFile = "${dotsroot}/secrets/x13/ssh.yaml";
 		age.keyFile = "/data/secrets/sops/age/keys.txt";
-    secrets.anton   = { path = "${config.home.homeDirectory}/.ssh/anton";   mode = "0600"; };
-    secrets.maria   = { path = "${config.home.homeDirectory}/.ssh/maria";   mode = "0600"; };
-    secrets.vds_ru1 = { path = "${config.home.homeDirectory}/.ssh/vds_ru1"; mode = "0600"; };
+    secrets.defalut = { path = "${config.home.homeDirectory}/.ssh/default";	mode = "0600"; };
+    secrets.anton   = { path = "${config.home.homeDirectory}/.ssh/anton";  	mode = "0600"; };
+    secrets.maria   = { path = "${config.home.homeDirectory}/.ssh/maria";  	mode = "0600"; };
+    secrets.vds_ru1 = { path = "${config.home.homeDirectory}/.ssh/vds_ru1";	mode = "0600"; };
   };
 
 
