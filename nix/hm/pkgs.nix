@@ -1,5 +1,5 @@
 # /nix/hm/pkgs.nix
-{ pkgs, zen-browser, ... }:
+{ pkgs, zen-browser, deploy-rs, ... }:
 {
 	home.packages = with pkgs; [
 			# cli tools
@@ -20,6 +20,9 @@
 
 			# fonts; themes; etc
 			nerd-fonts.jetbrains-mono
+
+			# deploy
+			deploy-rs.packages.${pkgs.stdenv.hostPlatform.system}.default
 
 			# desktop apps (gui)
 			#brave

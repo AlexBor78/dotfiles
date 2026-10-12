@@ -29,8 +29,11 @@ in {
     secrets.anton   = { path = "${config.home.homeDirectory}/.ssh/anton";  	mode = "0600"; };
     secrets.maria   = { path = "${config.home.homeDirectory}/.ssh/maria";  	mode = "0600"; };
     secrets.vds-ru1 = { path = "${config.home.homeDirectory}/.ssh/vds-ru1";	mode = "0600"; };
-  };
 
+    secrets.deploy-anton   = { path = "${config.home.homeDirectory}/.ssh/deploy-anton";  	mode = "0600"; };
+    secrets.deploy-maria   = { path = "${config.home.homeDirectory}/.ssh/deploy-maria";  	mode = "0600"; };
+    secrets.deploy-vds-ru1 = { path = "${config.home.homeDirectory}/.ssh/deploy-vds-ru1";	mode = "0600"; };
+  };
 
 	# some AI generated magic for ssh configuration
 	programs.ssh.enable = true;
