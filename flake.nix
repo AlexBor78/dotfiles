@@ -77,7 +77,7 @@ description = "my main desktop nixos config";
     mkSystem = hostname: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { 
-				inherit self lexalib hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl kumir nix-flatpak liquidsfz caelestia deploy-rs;
+				inherit self lexalib dotsroot hostname username zen-browser nixvim rofi-theme sops-nix reaper-flake aagl kumir nix-flatpak liquidsfz caelestia deploy-rs;
 			};
 			modules = [
 				{ nixpkgs.config.allowUnfree = true; }

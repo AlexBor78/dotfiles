@@ -35,6 +35,7 @@
   services.power-profiles-daemon.enable = true;
 	systemd.tmpfiles.rules = [
 		"w /sys/class/power_supply/BAT0/charge_control_end_threshold - - - - 80"
+		"w /sys/class/power_supply/BAT1/charge_control_end_threshold - - - - 80"
 	];
 
 	services.tlp = {

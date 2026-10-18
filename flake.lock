@@ -282,11 +282,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791739219,
-        "narHash": "sha256-f1Ls8Q7DSaSwJ0QdbnNQrK+M0eK2JiBFJ8In45qd4TY=",
+        "lastModified": 1792313032,
+        "narHash": "sha256-oqGnonkemF77foZSm7Qa8eDTG5thZCpF+CL9UXqRELc=",
         "owner": "AlexBor78",
         "repo": "nix-lexalib",
-        "rev": "718e57d8fb76c863e482ca0a4e3510e6f831ed7c",
+        "rev": "75e3b0ed4185d342c945d12288be378f73fe4447",
         "type": "github"
       },
       "original": {

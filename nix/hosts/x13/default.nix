@@ -1,6 +1,5 @@
 # /nix/hosts/x13/default.nix
-{ ... }:
-{
+{ lexalib, dotsroot, ... }: {
 	imports = [
 		./hardware-configuration.nix
 		./disks.nix
@@ -16,6 +15,21 @@
 	# for dark theme
 	programs.dconf.enable = true;
 
+	# builder
+	nix.distributedBuilds = true;
+	nix.buildMachines = [{
+		hostName = lexalib.infra.maria.ip;
+		sshUser = "builder";
+		system = "x86_64-linux";
+		maxJobs = 2;
+		speedFactor = 1;
+		supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+	}];
+
+	nix.settings.builders-use-substitutes = true;
+	# nix.settings.max-jobs = 0; # add when will have less rebuild
+	nix.settings.connect-timeout = 5;
+
   # Bootloader (grub)
   boot.loader.grub = {
 		extraEntries = ''
@@ -28,6 +42,17 @@
 			}
 		'';
   };
+
+	sops.age.keyFile = "/data/secrets/sops/age/keys.txt";
+	sops.secrets.builder-access-root = {
+		sopsFile = "${dotsroot}/secrets/x13/ssh.yaml";
+		key = "builder-access";
+		path = "/root/.ssh/id_ed25519";
+	};
+	programs.ssh.knownHosts.maria = {
+		hostNames = [ lexalib.infra.maria.ip ];
+		publicKey = lexalib.infra.maria.public-ssh-keys.default;
+	};
 
 #  boot.kernelParams = [
 #    "nohz_idle=on"
