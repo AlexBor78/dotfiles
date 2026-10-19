@@ -10,6 +10,7 @@
 		file
 		tmux
 		busybox
+		nmap
 		vim
 		pv
 
