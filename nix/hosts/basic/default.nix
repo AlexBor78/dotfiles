@@ -12,6 +12,8 @@
 		./pkgs.nix
 	];
 
+	documentation.dev.enable = true;
+
 	# paltform
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 

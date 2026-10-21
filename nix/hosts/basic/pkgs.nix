@@ -13,6 +13,8 @@
 		nmap
 		vim
 		pv
+		man-pages
+		man-pages-posix
 
 		# sops
 		age sops
